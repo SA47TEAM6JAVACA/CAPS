@@ -35,7 +35,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages="sg.iss.demo")
 @PropertySource({ "classpath:application.properties",
 		"classpath:/i18n/messages.properties" })
-@EnableJpaRepositories("sg.iss.demo.repo")
+@EnableJpaRepositories("sg.iss.CAPS_TEAM6.repo")
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
