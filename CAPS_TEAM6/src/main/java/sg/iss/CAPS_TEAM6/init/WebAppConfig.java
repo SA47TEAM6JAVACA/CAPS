@@ -32,7 +32,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages="sg.iss.demo")
+@ComponentScan(basePackages="sg.iss.CAPS_TEAM6")
 @PropertySource({ "classpath:application.properties",
 		"classpath:/i18n/messages.properties" })
 @EnableJpaRepositories("sg.iss.CAPS_TEAM6.repo")
