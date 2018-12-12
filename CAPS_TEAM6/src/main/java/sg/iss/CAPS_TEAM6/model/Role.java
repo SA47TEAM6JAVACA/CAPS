@@ -1,70 +1,48 @@
 package sg.iss.CAPS_TEAM6.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
- * User class
+ * Course class
  *
  * @version $Revision: 1.0
  */
 @Entity
-@Table(name = "user")
+@Table(name = "role")
 public class Role {
 	@Id
-	@Column(name = "userid")
-	private String userId;
-	@Basic(optional = false)
+	@Column(name = "roleid")
+	private String roleId;
 	@Column(name = "name")
 	private String name;
-	@Column(name = "password")
-	private String password;
-	@Column(name = "employeeid")
-	private String employeeId;
-
-	@ManyToMany(targetEntity = Role.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinTable(name = "userrole", joinColumns = {
-			@JoinColumn(name = "userid", referencedColumnName = "userid") }, inverseJoinColumns = {
-					@JoinColumn(name = "roleid", referencedColumnName = "roleid") }
-
-	)
-	private List<Role> roleSet;
-	
-	@Transient
-	private ArrayList<String> roleIds = new ArrayList<String>();
-
-	public Role() {
+	@Column(name = "description")
+	private String description;
+		public Role() {
 	}
+   // @OneToOne
+   // @JoinColumn()
+    //private Customer customer;
+	public Role(String roleId, String name, String description) {
 
-	public Role(String userId, String name, String password, String employeeId) {
-		this.userId = userId;
+		this.roleId = roleId;
 		this.name = name;
-		this.password = password;
-		this.employeeId = employeeId;
+		this.description = description;
+
 	}
 
-	public Role(String userId) {
-		this.userId = userId;
+	public Role(String roleId) {
+		this.roleId = roleId;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getRoleId() {
+		return roleId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getName() {
@@ -75,49 +53,19 @@ public class Role {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
-	}
-
-	public List<Role> getRoleSet() {
-		return roleSet;
-	}
-
-	public void setRoleSet(ArrayList<Role> roleSet) {
-		this.roleSet = roleSet;
-	}
-
-	public ArrayList<String> getRoleIds() {
-		ArrayList<Role> rList = (ArrayList<Role>) this.getRoleSet();
-		ArrayList<String> roleIds = new ArrayList<String>();
-		for (Role role : rList) {
-			roleIds.add(role.getRoleId());
-		}
-		return roleIds;
-	}
-
-	public void setRoleIds(ArrayList<String> roleIds) {
-
-		this.roleIds = roleIds;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((roleId == null) ? 0 : roleId.hashCode());
 		return result;
 	}
 
@@ -130,18 +78,16 @@ public class Role {
 		if (getClass() != obj.getClass())
 			return false;
 		Role other = (Role) obj;
-		if (userId == null) {
-			if (other.userId != null)
+		if (roleId == null) {
+			if (other.roleId != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!roleId.equals(other.roleId))
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", password=" + password + ", employeeId=" + employeeId
-				+ ", roleSet=" + roleSet + ", roleIds=" + roleIds + "]";
-	}
+
+	
+	
 
 }

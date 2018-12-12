@@ -31,8 +31,8 @@ public class User {
 	private String name;
 	@Column(name = "password")
 	private String password;
-	@Column(name = "employeeid")
-	private String employeeId;
+	@Column(name = "sid")
+	private String sId;
 
 	@ManyToMany(targetEntity = Role.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "userrole", joinColumns = {
@@ -48,11 +48,11 @@ public class User {
 	public User() {
 	}
 
-	public User(String userId, String name, String password, String employeeId) {
+	public User(String userId, String name, String password, String sId) {
 		this.userId = userId;
 		this.name = name;
 		this.password = password;
-		this.employeeId = employeeId;
+		this.sId = sId;
 	}
 
 	public User(String userId) {
@@ -83,12 +83,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getEmployeeId() {
-		return employeeId;
+	public String getsId() {
+		return sId;
 	}
 
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
+	public void setsId(String sId) {
+		this.sId = sId;
 	}
 
 	public List<Role> getRoleSet() {
@@ -140,7 +140,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", password=" + password + ", employeeId=" + employeeId
+		return "User [userId=" + userId + ", name=" + name + ", password=" + password + ", sId=" + sId
 				+ ", roleSet=" + roleSet + ", roleIds=" + roleIds + "]";
 	}
 
