@@ -26,4 +26,12 @@ public class CourseServiceImpl implements CourseService {
 		return (ArrayList<Course>) repo.findAll();
 	}
 
+
+	@Override
+	@Transactional
+	public Course findeCourse(int cid) {
+		// TODO Auto-generated method stub
+		return (Course)repo.findById(cid).get();
+	}
+
 }

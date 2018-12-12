@@ -2,29 +2,56 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
-
-<link href="<c:url value='/css/style.css'/>" rel="stylesheet"
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
 	type="text/css" />
 
-<%-- <a href="${pageContext.request.contextPath}/student/create">Add
-	Student</a> --%>
-	
-	<br />
-	<br />
-	<table class="borderAll">
-		<tr>
-			<th><s:message code="label.course.name" /></th>
-			<th><s:message code="label.course.startDate" /></th>
-			<th><s:message code="label.course.endDate" /></th>
-		</tr>
-		<c:forEach var="course" items="${courses}" varStatus="status">
-			<tr class="${status.index%2==0?'even':'odd'}">
-				<td class="nowrap">${course.cname}</td>
-				<td class="nowrap">${course.startdate}</td>
-				<td class="nowrap">${course.enddate}</td>
-				
-			</tr>
-		</c:forEach>
-	</table>
+</head>
+<body>
+
+<P>Select the course</P>
+
+
+ <form:form modelAttribute="studentcourse" action="${pageContext.request.contextPath}/student/enroll.html" method="post">
+
+<fieldset>  
+
+<form:select path="course.cname"
+items="${courses}" 
+
+/>
+
+
+ <input id="submit" type="submit" tabindex="5"
+value="Enroll course">
+
+ </fieldset>
+</form:form> 
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
