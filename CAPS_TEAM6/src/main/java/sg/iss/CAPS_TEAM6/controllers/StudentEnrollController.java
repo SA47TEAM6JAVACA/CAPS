@@ -1,6 +1,10 @@
 package sg.iss.CAPS_TEAM6.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,17 +69,21 @@ public class StudentEnrollController {
 		 if(course.getCname().equalsIgnoreCase(studentcourse.getCourse().getCname()))
 			 courseid=course.getCid();
 		 }
-		
+		 Calendar cal = Calendar.getInstance();
+		    Date date=cal.getTime();
+		 
 		 studentcourse.setAttendence(attendence);
 		 studentcourse.setStudent(s);
 		 studentcourse.setCourse(service.findeCourse(courseid));
-		
-	
+		 studentcourse.setEnrollDate(date);	
+		 
+		 
 			String message = "New studentcourse " +studentcourse.getScid() + " was successfully created.";
 
 			scservice.createStudentCourse(studentcourse);
 			mav.setViewName("redirect:/student/enroll");
 
+			
 			//redirectAttributes.addFlashAttribute("message", message);
 			return mav;
 		  }
@@ -91,15 +99,28 @@ public class StudentEnrollController {
 		cn.add(course.getCname());
 	}
 	  
+	  System.out.println(getCurrentTimeUsingCalendar());
 	  
 	  System.out.println("Size of the course"+courses.size());
 	  ModelAndView mav = new ModelAndView("EnrollCourse");
-	 mav.addObject("courses", cn);
+	  mav.addObject("courses", cn);
 	 
 	 
-	 mav.addObject("studentcourse", new StudentCourse());
+	  mav.addObject("studentcourse", new StudentCourse());
 	  
 	  return mav;
 	  }
+	 
+
+public String getCurrentTimeUsingCalendar() {
+    Calendar cal = Calendar.getInstance();
+    Date date=cal.getTime();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String formattedDate=dateFormat.format(date);
+
+    return formattedDate;
+    
+}
+	
 	  
 }
