@@ -43,12 +43,12 @@ public class StudentCourseController {
 	public ModelAndView listStudent() {
 		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
 		ArrayList<Student> slist = new ArrayList<Student>();
-		ArrayList<Course> clist = new ArrayList<Course>();
+	//	ArrayList<Course> clist = new ArrayList<Course>();
 		ModelAndView mav = new ModelAndView("Enrollment");
 		slist = sService.listStudentsEnrolledForCourse(1);
-//		clist = sService.listCoursesTaughtByLecturer(1);
+     //	clist = sService.listCoursesTaughtByLecturer(1);
 		elist = sService.gradeCourse(1);
-//		mav.addObject("clist",clist);
+	//	mav.addObject("clist",clist);
 		mav.addObject("slist",slist);
 		mav.addObject("elist",elist);
 		return mav;

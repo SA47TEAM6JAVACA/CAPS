@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h2> Students taking course cid 1 :
+ </h2>
   <c:if test="${fn:length(slist) gt 0}">
   <table>
      <tr> <th>NRIC</th> <th>Name</th> <th>Nick Name</th></tr>
