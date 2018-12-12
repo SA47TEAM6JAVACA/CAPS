@@ -36,6 +36,8 @@ public class Lecturer implements Serializable {
 			@JoinColumn(name="course_id")
 			}
 		)
+	
+	
 	private List<Course> courses;
 
 	public Lecturer() {
