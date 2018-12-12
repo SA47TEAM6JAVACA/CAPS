@@ -29,13 +29,13 @@ public class StudentCourseController {
    //		binder.addValidators(sValidator);
    //	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listAll() {
 		ModelAndView mav = new ModelAndView("ManageEnrol");
 		ArrayList<StudentCourse> enrolment = sService.findAllenrols();
 		mav.addObject("enrolments", enrolment);
 		return mav;
-	}
+	}*/
 	
 	
 }

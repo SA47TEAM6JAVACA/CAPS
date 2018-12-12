@@ -1,5 +1,7 @@
 package sg.iss.CAPS_TEAM6.services;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,12 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	public StudentCourse createStudentCourse(StudentCourse s) {
 		return sr.saveAndFlush(s);
 	
+	}
+
+	@Override
+	public ArrayList<StudentCourse> findAllenrols() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
