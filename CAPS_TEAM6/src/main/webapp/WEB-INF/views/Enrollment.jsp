@@ -13,7 +13,7 @@
  </h2>
   <c:if test="${fn:length(slist) gt 0}">
   <table>
-     <tr> <th>NRIC</th> <th>Name</th> <th>Nick Name</th></tr>
+     <tr> <th>NRIC</th> <th>Name</th> </tr>
      <c:forEach items="${slist}" var="student">
      <tr> 
           <td> ${student.semail}  </td> 
@@ -39,9 +39,8 @@
   <table>
      <tr> <th>Code</th> <th>Name</th> <th>Lecturer</th></tr>
      <c:forEach items="${clist}" var="course">
-     <tr> <td> ${course.courseCode} </td> 
-          <td> ${course.courseName}  </td> 
-          <td> ${course.lecturer.name} </td></tr>
+     <tr> <td> ${course.cname} </td> 
+          <td> ${course.credit}  </td> 
      </c:forEach>
   </table>
  </c:if>

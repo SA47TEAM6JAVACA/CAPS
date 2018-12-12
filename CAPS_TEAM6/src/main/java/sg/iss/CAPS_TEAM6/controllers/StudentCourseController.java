@@ -48,7 +48,7 @@ public class StudentCourseController {
 		slist = sService.listStudentsEnrolledForCourse(1);
      	clist = sService.listCoursesTaughtByLecturer(1);
 		elist = sService.gradeCourse(1);
-	//	mav.addObject("clist",clist);
+	    mav.addObject("clist",clist);
 		mav.addObject("slist",slist);
 		mav.addObject("elist",elist);
 		return mav;
