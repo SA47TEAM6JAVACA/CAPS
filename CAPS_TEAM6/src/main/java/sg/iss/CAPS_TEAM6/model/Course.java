@@ -38,7 +38,7 @@ public class Course implements Serializable {
 	private int studentlimit;
 
 	//bi-directional many-to-one association to StudentCourse
-	@OneToMany(mappedBy="course")
+	@OneToMany(mappedBy="course",cascade= {CascadeType.ALL})
 	private List<StudentCourse> studentCourses;
 
 	//bi-directional many-to-many association to Lecturer
