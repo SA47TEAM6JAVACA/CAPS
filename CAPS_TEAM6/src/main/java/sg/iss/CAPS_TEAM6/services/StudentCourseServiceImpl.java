@@ -71,12 +71,11 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		
 	}
 
-/*	@Override
+	@Override
 	@Transactional
 	public ArrayList<Course> listCoursesTaughtByLecturer(int lid) {
 		return lrepo.findCoursesByLid(lid);
 	}
-*/
 	@Override
 	@Transactional
 	public ArrayList<StudentCourse> gradeCourse(int cid) {

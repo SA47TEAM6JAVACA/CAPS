@@ -11,7 +11,7 @@ import sg.iss.CAPS_TEAM6.model.Lecturer;
 
 public interface LecturerRepository extends JpaRepository<Lecturer,Integer> {
 
-//	@Query("SELECT c.course from Lecturer c WHERE c.lid = :lid")
-//    ArrayList<Course> findCoursesByLid(@Param("lid") Integer lid);
+	@Query("SELECT c.courses from Lecturer c WHERE c.lid = :lid")
+    ArrayList<Course> findCoursesByLid(@Param("lid") Integer lid);
 	
 }

@@ -35,6 +35,17 @@
   </table>
  </c:if>
  
+  <c:if test="${fn:length(clist) gt 0}">
+  <table>
+     <tr> <th>Code</th> <th>Name</th> <th>Lecturer</th></tr>
+     <c:forEach items="${clist}" var="course">
+     <tr> <td> ${course.courseCode} </td> 
+          <td> ${course.courseName}  </td> 
+          <td> ${course.lecturer.name} </td></tr>
+     </c:forEach>
+  </table>
+ </c:if>
+ 
 
 
 </body>

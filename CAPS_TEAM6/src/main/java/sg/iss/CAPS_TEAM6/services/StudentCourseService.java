@@ -11,7 +11,7 @@ public interface StudentCourseService {
 
 	ArrayList<StudentCourse> findAllenrols();
 	public ArrayList<Student> listStudentsEnrolledForCourse(int cid);
-//	public ArrayList<Course> listCoursesTaughtByLecturer(int lid);
+	public ArrayList<Course> listCoursesTaughtByLecturer(int lid);
 	public ArrayList<StudentCourse> gradeCourse(int cid);
 	StudentCourse findStudent(int stuid);
 
