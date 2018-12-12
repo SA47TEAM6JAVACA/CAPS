@@ -7,8 +7,14 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.model.Student;
 import sg.iss.CAPS_TEAM6.model.StudentCourse;
+import sg.iss.CAPS_TEAM6.repo.CourseRepository;
+import sg.iss.CAPS_TEAM6.repo.LecturerRepository;
 import sg.iss.CAPS_TEAM6.repo.StudentCourseRepository;
+import sg.iss.CAPS_TEAM6.repo.StudentRepository;
+
 
 
 
@@ -17,6 +23,15 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 
 	@Resource
 	StudentCourseRepository screpo;
+	
+	@Resource
+	LecturerRepository lrepo;
+	
+	@Resource
+	CourseRepository crepo;
+	
+	@Resource
+	StudentRepository srepo;
 	
 	
 	@Override
@@ -48,5 +63,26 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	@Transactional
+	public ArrayList<Student> listStudentsEnrolledForCourse(int cid) {
+		return screpo.findStudentsEnrolledForCourse(cid);
+		
+	}
+
+//	@Override
+//	@Transactional
+//	public ArrayList<Course> listCoursesTaughtByLecturer(int lid) {
+//		return crepo.findCoursesByLid(lid);
+//	}
+
+	@Override
+	@Transactional
+	public ArrayList<StudentCourse> gradeCourse(int cid) {
+		return screpo.findEnrolmentForCourse(cid);
+	}
+	
+	
 
 }

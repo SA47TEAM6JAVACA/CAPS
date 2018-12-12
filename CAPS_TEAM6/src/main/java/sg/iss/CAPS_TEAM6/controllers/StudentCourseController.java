@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import sg.iss.CAPS_TEAM6.model.StudentCourse;
 import sg.iss.CAPS_TEAM6.services.StudentCourseService;
+import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.model.Student;
 
 
 
@@ -37,5 +39,18 @@ public class StudentCourseController {
 		return mav;
 	}
 	
-	
+	@RequestMapping(value = "/listStudent", method = RequestMethod.GET)
+	public ModelAndView listStudent() {
+		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
+		ArrayList<Student> slist = new ArrayList<Student>();
+		ArrayList<Course> clist = new ArrayList<Course>();
+		ModelAndView mav = new ModelAndView("Enrollment");
+		slist = sService.listStudentsEnrolledForCourse(1);
+//		clist = sService.listCoursesTaughtByLecturer(1);
+		elist = sService.gradeCourse(1);
+//		mav.addObject("clist",clist);
+		mav.addObject("slist",slist);
+		mav.addObject("elist",elist);
+		return mav;
+	}
 }

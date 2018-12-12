@@ -1,8 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -19,12 +17,16 @@
 <td>attendance</td>
 </tr>
 
-<c:forEach items="enrolments"  var="enrolment" varStatus="index">
+
+
+<c:forEach items="${enrolments}"  var="enrolment" varStatus="index">
 <tr>
 <td>${index.index+1}</td>
-<td>${StudentCourse.attendence}</td>
-<td>${StudentCourse.enrollDate}</td>
-<td>${StudentCourse.score}</td>
+<td>${enrolment.student.firstmiddlename}</td>
+<td>${enrolment.course.cname}</td>
+<td>${enrolment.enrollDate}</td>
+<td>${enrolment.score}</td>
+<td>${enrolment.attendence}</td>
 </tr>
 
 
