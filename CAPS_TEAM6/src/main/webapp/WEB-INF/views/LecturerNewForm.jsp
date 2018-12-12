@@ -11,9 +11,10 @@
 <body>
   <form:form action="${pageContext.request.contextPath}/lecturer/new.html" method="POST" modelAttribute="lecturer">
     ID: <form:input path="lid" size="10" readonly="true"/> <br/>
-    Name: <form:input path="firstmiddlename" size="40"/> <br/>
-    EMAIL: <form:input path="lemail" size="50" /> <br/>
-    PASSWORD: <form:input path="lpassword" size = "200"/> <br/>
+    FirstName: <form:input path="firstmiddlename" size="40"/> <form:errors path="firstmiddlename" cssStyle="color:red;"/><br/>
+    LastName: <form:input path="lastname" size="40"/> <form:errors path="firstmiddlename" cssStyle="color:red;"/><br/>
+    EMAIL: <form:input path="lemail" size="50" /><form:errors path="lemail" cssStyle="color:red;"/> <br/>
+    PASSWORD: <form:input path="lpassword" size = "200"/><form:errors path="lpassword" cssStyle="color:red;"/> <br/>
     <input type="submit" value ="Submit"/> <br/>
     <input type="reset" value ="Cancel"/> <br/>
   </form:form>
