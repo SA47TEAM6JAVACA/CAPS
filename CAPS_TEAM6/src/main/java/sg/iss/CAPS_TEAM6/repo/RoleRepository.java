@@ -1,18 +1,9 @@
-package edu.iss.cats.repository;
-
-import java.util.ArrayList;
+package sg.iss.CAPS_TEAM6.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import edu.iss.cats.model.Role;
+import sg.iss.CAPS_TEAM6.model.Role;
 
-public interface RoleRepository extends  JpaRepository<Role, String> {
-	
-	@Query("SELECT r.name FROM Role r")
-	ArrayList<String> findAllRolesNames();
-	
-	@Query("SELECT r FROM Role r WHERE r.name = :name")
-	ArrayList<Role> findRoleByName(@Param("name") String name);
+public interface RoleRepository extends JpaRepository<Role,Integer> {
+
 }
