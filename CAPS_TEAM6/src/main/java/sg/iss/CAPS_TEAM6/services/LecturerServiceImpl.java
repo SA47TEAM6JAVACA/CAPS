@@ -1,5 +1,5 @@
 package sg.iss.CAPS_TEAM6.services;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
@@ -46,8 +46,9 @@ public class LecturerServiceImpl implements LecturerService {
 	}
 	
 	@Override
-	public void lecturerAddCourses(Lecturer l, List<Course> courses) {
-		l.setCourses(courses);
+	public void lecturerAddCourses(Lecturer l, Course courses) {
+		l.getCourses().add(courses);
+		courses.getLecturers().add(l);
 		lrepo.save(l);
 	}
 

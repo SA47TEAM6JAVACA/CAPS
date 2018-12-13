@@ -42,7 +42,7 @@ public class Course implements Serializable {
 	private List<StudentCourse> studentCourses;
 
 	//bi-directional many-to-many association to Lecturer
-	@ManyToMany(mappedBy="courses")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="courses")
 	private List<Lecturer> lecturers;
 
 	public Course() {

@@ -18,7 +18,7 @@ public interface LecturerService {
 	 Lecturer UpdateLecturer(Lecturer l);
 
 	void RemoveLecturer(Lecturer l);
-	void lecturerAddCourses(Lecturer l, List<Course> c);
+	void lecturerAddCourses(Lecturer l, Course c);
 
 
 }

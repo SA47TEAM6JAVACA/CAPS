@@ -26,7 +26,7 @@ public class Lecturer implements Serializable {
 	private String lpassword;
 
 	//bi-directional many-to-many association to Course
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="lecturer_course"
 		, joinColumns={

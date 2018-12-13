@@ -40,7 +40,6 @@ CourseService courseservice;
 	}
 	
 	
-	
 	@RequestMapping(value="/new",method=RequestMethod.POST)
 	public ModelAndView newLecturerPage(@ModelAttribute Lecturer lecturer)
 	{
@@ -51,17 +50,17 @@ CourseService courseservice;
 		return mav;
 	}
 	
+	
 	@RequestMapping(value="/new_course/lecturer/{lid}/course/{cid}", method=RequestMethod.GET)
 	public ModelAndView addLecturerCourse(@PathVariable Integer lid, @PathVariable Integer cid) {
-		System.out.println(cid);
+		
 		Lecturer lecturer = lecturerservice.FindLecturer(lid);
 		Course course = courseservice.FindCourse(cid);
-		ArrayList courses = new ArrayList();
-		courses.add(course);
-		lecturerservice.lecturerAddCourses(lecturer, courses);
+		lecturerservice.lecturerAddCourses(lecturer, course);
 		ModelAndView mav = new ModelAndView("LectureCRUD");
 	    return mav;
 	}
+	
 	
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.GET)
 	public ModelAndView editLecturerPage(@PathVariable Integer lid)
@@ -70,6 +69,8 @@ CourseService courseservice;
 		ModelAndView mav=new ModelAndView("LecturerEditForm","lecturer",lecturer);
 		return mav;
 	}
+	
+	
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.POST)
 	public ModelAndView editLecturerPage(@PathVariable Integer lid,@ModelAttribute Lecturer lecturer)
 	{
@@ -79,6 +80,7 @@ CourseService courseservice;
 		mav.addObject("lecturers",llist);
 		return mav;
 	}
+	
 	
 	@RequestMapping(value="/delete/{lid}",method=RequestMethod.GET)
 	public ModelAndView deleteLecturer(@PathVariable Integer lid)
