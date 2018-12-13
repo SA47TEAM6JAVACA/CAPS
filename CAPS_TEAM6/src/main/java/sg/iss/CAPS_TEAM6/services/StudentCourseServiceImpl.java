@@ -59,8 +59,10 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	}
 
 	@Override
+	@Transactional
 	public void removeStudent(StudentCourse s) {
-		// TODO Auto-generated method stub
+		screpo.delete(s);
+
 
 	}
 

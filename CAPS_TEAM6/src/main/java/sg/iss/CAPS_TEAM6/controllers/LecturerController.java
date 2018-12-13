@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import sg.iss.CAPS_TEAM6.model.Lecturer;
+import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.services.CourseService;
 import sg.iss.CAPS_TEAM6.services.LecturerService;
 
 @Controller
@@ -18,6 +20,8 @@ import sg.iss.CAPS_TEAM6.services.LecturerService;
 public class LecturerController {
 @Autowired
 LecturerService lecturerservice;
+@Autowired
+CourseService courseservice;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listAll() {
@@ -47,6 +51,18 @@ LecturerService lecturerservice;
 		return mav;
 	}
 	
+	@RequestMapping(value="/new_course/lecturer/{lid}/course/{cid}", method=RequestMethod.GET)
+	public ModelAndView addLecturerCourse(@PathVariable Integer lid, @PathVariable Integer cid) {
+		System.out.println(cid);
+		Lecturer lecturer = lecturerservice.FindLecturer(lid);
+		Course course = courseservice.FindCourse(cid);
+		ArrayList courses = new ArrayList();
+		courses.add(course);
+		lecturerservice.lecturerAddCourses(lecturer, courses);
+		ModelAndView mav = new ModelAndView("LectureCRUD");
+	    return mav;
+	}
+	
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.GET)
 	public ModelAndView editLecturerPage(@PathVariable Integer lid)
 	{
@@ -74,4 +90,5 @@ LecturerService lecturerservice;
 		mav.addObject("lecturers",llist);
 		return mav;
 	}
+	
 }
