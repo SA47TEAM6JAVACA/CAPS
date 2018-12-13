@@ -41,9 +41,9 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	}
 
 	@Override
-	public StudentCourse findStudent(int stuid) {
-		// TODO Auto-generated method stub
-		return null;
+	public StudentCourse findStudentCourseBySCID(int scid) {
+		
+		return screpo.findStudentCourseByID(scid);
 	}
 
 	@Override

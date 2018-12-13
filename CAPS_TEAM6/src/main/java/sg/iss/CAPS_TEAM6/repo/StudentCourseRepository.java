@@ -20,4 +20,6 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse,Int
 	@Query ("Select e.student from StudentCourse e where e.course.cid = :cid")
 	ArrayList<Student> findStudentsEnrolledForCourse(@Param("cid") int cid);
 
+	@Query("Select e from StudentCourse e where e.scid=:scid")
+	StudentCourse findStudentCourseByID(@Param("scid") int scid);
 }

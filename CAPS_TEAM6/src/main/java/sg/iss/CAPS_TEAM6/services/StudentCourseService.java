@@ -13,7 +13,7 @@ public interface StudentCourseService {
 	public ArrayList<Student> listStudentsEnrolledForCourse(int cid);
 	public ArrayList<Course> listCoursesTaughtByLecturer(int lid);
 	public ArrayList<StudentCourse> gradeCourse(int cid);
-	StudentCourse findStudent(int stuid);
+	StudentCourse findStudentCourseBySCID(int scid);
 
 	StudentCourse createStudent(StudentCourse s);
 

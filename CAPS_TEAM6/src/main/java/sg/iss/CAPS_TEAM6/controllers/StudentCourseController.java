@@ -66,6 +66,18 @@ public class StudentCourseController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/listgrade/delete/{scid}", method = RequestMethod.POST)
+	public ModelAndView deleteEnrol(@PathVariable Integer scid) {
+		StudentCourse list=sService.findStudentCourseByID(scid);
+		sService.removeStudent(list);
+		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
+		elist = sService.gradeCourse(1);
+		ModelAndView mav = new ModelAndView("ListGrade");
+		mav.addObject("elist",elist);
+		return mav;
+	}
+	
+	
 	@RequestMapping(value = "/ListStudentEnrolledForCourse", method = RequestMethod.GET)
 	public ModelAndView listStudent() {
 		ArrayList<Student> slist = new ArrayList<Student>();
