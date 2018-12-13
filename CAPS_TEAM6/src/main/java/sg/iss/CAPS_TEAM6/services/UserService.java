@@ -1,9 +1,9 @@
-package edu.iss.cats.service;
+package sg.iss.CAPS_TEAM6.services;
 
 import java.util.ArrayList;
 
-import edu.iss.cats.model.Role;
-import edu.iss.cats.model.User;
+import sg.iss.CAPS_TEAM6.model.Role;
+import sg.iss.CAPS_TEAM6.model.User;
 
 public interface UserService {
 
@@ -21,7 +21,7 @@ public interface UserService {
 
 	ArrayList<String> findRoleNamesForUser(String userId);
 
-	ArrayList<String> findManagerNameByUID(String userId);
+	ArrayList<String> findAdminNameByUID(String userId);
 	
 	User authenticate(String uname, String pwd);
 
