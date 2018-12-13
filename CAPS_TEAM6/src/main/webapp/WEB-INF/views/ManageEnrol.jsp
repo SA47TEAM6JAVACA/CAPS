@@ -13,8 +13,6 @@
 <td>student</td>
 <td>course</td>
 <td>EnrollmentDate</td>
-<td>score</td>
-<td>attendance</td>
 </tr>
 
 
@@ -25,8 +23,6 @@
 <td>${enrolment.student.firstmiddlename}</td>
 <td>${enrolment.course.cname}</td>
 <td>${enrolment.enrollDate}</td>
-<td>${enrolment.score}</td>
-<td>${enrolment.attendence}</td>
 </tr>
 
 
