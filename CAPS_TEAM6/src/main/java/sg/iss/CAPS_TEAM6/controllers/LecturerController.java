@@ -29,7 +29,7 @@ LecturerService lecturerservice;
 @Autowired
 private LecturerValidator lValidator;
 
-@InitBinder("lecturer")
+@InitBinder
 private void initLecturerBinder(WebDataBinder binder)
 {
 	binder.addValidators(lValidator);
@@ -43,6 +43,17 @@ private void initLecturerBinder(WebDataBinder binder)
 		mav.addObject("lecturers",llist);
 		return mav;
 	}
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public ModelAndView neffwLecturerPage(@ModelAttribute @Valid Lecturer lecturer, BindingResult result,
+			final RedirectAttributes redirectAttributes)
+	{
+		if(result.hasErrors())
+			return new ModelAndView("LecturerEditForm");
+		lecturerservice.CreateLecturer(lecturer);
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("redirect:/lecturer/list");
+		return mav;
+	}
 	
 	
 	@RequestMapping(value="/new", method = RequestMethod.GET)
@@ -52,21 +63,17 @@ private void initLecturerBinder(WebDataBinder binder)
 		
 	}
 	
-	@RequestMapping(value="/new",method=RequestMethod.POST)
-	public ModelAndView newLecturerPage(@ModelAttribute @Valid Lecturer lecturer, BindingResult result,
-			final RedirectAttributes redirectAttributes)
-	{
-		if(result.hasErrors())
-			return new ModelAndView("LecturerNewForm");
-		lecturerservice.CreateLecturer(lecturer);
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("redirect:/lecturer/list");
-		//lecturerservice.UpdateLecturer(lecturer);
-		//ModelAndView mav = new ModelAndView("LectureCRUD");
-		//ArrayList<Lecturer> llist=lecturerservice.findAllenrols();
-		//mav.addObject("lecturers",llist);
-		return mav;
-	}
+//	@RequestMapping(value="/new",method=RequestMethod.POST)
+//	public ModelAndView newLecturerPage(@ModelAttribute @Valid Lecturer lecturer, BindingResult result,
+//			final RedirectAttributes redirectAttributes)
+//	{
+//		if(result.hasErrors())
+//			return new ModelAndView("LecturerNewForm");
+//		lecturerservice.CreateLecturer(lecturer);
+//		ModelAndView mav=new ModelAndView();
+//		mav.setViewName("redirect:/lecturer/list");
+//		return mav;
+//	}
 	
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.GET)
 	public ModelAndView editLecturerPage(@PathVariable Integer lid)
@@ -75,22 +82,19 @@ private void initLecturerBinder(WebDataBinder binder)
 		ModelAndView mav=new ModelAndView("LecturerEditForm","lecturer",lecturer);
 		return mav;
 	}
+	
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.POST)
 	public ModelAndView editLecturerPage(@ModelAttribute @Valid Lecturer lecturer, BindingResult result,
 			final RedirectAttributes redirectAttributes)
 	{
 		
 		if(result.hasErrors())
-			return new ModelAndView("LecturerEditForm");
+		{System.err.println("dwaojdoapiwdjqwdjqopdjwqpdjqpdijqodjwqidqd");
+			return new ModelAndView("LecturerEditForm");}
 		lecturerservice.CreateLecturer(lecturer);
 		ModelAndView mav=new ModelAndView();
 		redirectAttributes.addFlashAttribute("message", "Error Rediection");
 		return mav;
-	   //lecturerservice.UpdateLecturer(lecturer);
-		//ModelAndView mav = new ModelAndView("LectureCRUD");
-		//ArrayList<Lecturer> llist=lecturerservice.findAllenrols();
-		//mav.addObject("lecturers",llist);
-		//return mav;
 	}
 	
 	@RequestMapping(value="/delete/{lid}",method=RequestMethod.GET)

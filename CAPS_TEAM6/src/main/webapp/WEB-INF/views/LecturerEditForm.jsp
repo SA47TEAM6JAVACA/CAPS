@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <form:form action="${pageContext.request.contextPath}/lecturer/new.html" method="POST" modelAttribute="lecturer">
+  <form:form action="${pageContext.request.contextPath}/lecturer/list.html" method="POST" modelAttribute="lecturer">
      ID: <form:input path="lid" size="10" readonly="true"/> 
     FirstName: <form:input path="firstmiddlename" size="40"/> <form:errors path="firstmiddlename" cssStyle="color:red;"/><br/>
     LastName: <form:input path="lastname" size="40"/> <form:errors path="firstmiddlename" cssStyle="color:red;"/><br/>
