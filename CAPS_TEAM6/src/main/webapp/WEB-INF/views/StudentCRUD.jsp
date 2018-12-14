@@ -4,7 +4,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link href="<c:url value='/css/simple.css'/>" rel="stylesheet"
 	type="text/css" />
+	<ul class="sidelist">
+		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
+			<li><a
+				href="${listMapview.value}">
+					${listMapview.key}</a></li>
+
+		</c:forEach>
+	</ul>
+
+	<hr>
 <a href="${pageContext.request.contextPath}/AdminStudent/newStudent">Add
 	Student</a>
 <c:if test="${fn:length(Students) gt 0}">

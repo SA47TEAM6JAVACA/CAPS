@@ -2,7 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	<ul class="sidelist">
+		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
+			<li><a
+				href="${listMapview.value}">
+					${listMapview.key}</a></li>
+
+		</c:forEach>
+	</ul>
+
+	<hr>
 <html>
 <head>
 <meta charset="ISO-8859-1">

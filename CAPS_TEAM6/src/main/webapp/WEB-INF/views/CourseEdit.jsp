@@ -16,6 +16,17 @@
 		});
 	});
 </script>
+	<ul class="sidelist">
+		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+
+			<li><a
+				href="${listMapview.value}">
+					${listMapview.key}</a></li>
+
+		</c:forEach>
+	</ul>
+
+	<hr>
 <h1>This is the Course edit page</h1>
 <form:form action="${pageContext.request.contextPath}/Admin/newCourse"
 	mehtod="POST" modelAttribute="course">

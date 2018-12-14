@@ -116,6 +116,7 @@ us.setRole(role);
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mav;
 		session.removeAttribute("USERSESSION");
+
 		mav = new ModelAndView("redirect:/common/home");
 		return mav;
 	}
@@ -161,18 +162,18 @@ us.setRole(role);
 		if (role.equalsIgnoreCase("admin")) {
 		
 			h = new HashMap<>();
-			h.put("Manage Students", "/login.html");
-			h.put("Manage Lecturers", "/login.html");
-			h.put("Manage Courses", "CAPS_TEAM6/student/enroll");
-			h.put("Manage Enrolment", "CAPS_TEAM6/student/enroll");
+			h.put("Manage Students", "http://localhost:8080/CAPS_TEAM6/AdminStudent/ManageStudent");
+			h.put("Manage Lecturers", "http://localhost:8080/CAPS_TEAM6/lecturer/list");
+			h.put("Manage Courses", "http://localhost:8080/CAPS_TEAM6/Admin/ManageCourse");
+			h.put("Manage Enrolment", "http://localhost:8080/CAPS_TEAM6/StudentCourse/Manageenrol");
 
 			h.put("Log Out", "http://localhost:8080/CAPS_TEAM6/common/home");
 
 		} else if (role.equalsIgnoreCase("student")) {
 			h = new HashMap<>();
 			
-			h.put("Grades and GPA", "/login.html");
-			h.put("View Courses", "/login.html");
+			h.put("Grades and GPA", "http://localhost:8080/CAPS_TEAM6/StudentCourse/viewper");
+			h.put("View Courses", "http://localhost:8080/CAPS_TEAM6/");
 			h.put("Enroll for a Course", "http://localhost:8080/CAPS_TEAM6/student/enroll");
 			h.put("Logout", "http://localhost:8080/CAPS_TEAM6/common/home");
 
@@ -180,10 +181,10 @@ us.setRole(role);
 
 			
 			h = new HashMap<>();
-			h.put("View Courses Taught", "/lecturer/list");
-			h.put("View Course Enrolment", "/login.html");
-			h.put("Grade a Course", "CAPS_TEAM6/student/enroll");
-			h.put("View a Student Performance", "CAPS_TEAM6/student/enroll");
+			h.put("View Courses Taught", "http://localhost:8080/CAPS_TEAM6/lecturer/list");
+			h.put("View Course Enrolment", "http://localhost:8080/CAPS_TEAM6/");
+			h.put("Grade a Course", "http://localhost:8080/CAPS_TEAM6/StudentCourse/listgrade");
+			h.put("View a Student Performance", "http://localhost:8080/CAPS_TEAM6/StudentCourse/viewper");
 			h.put("Log Out", "http://localhost:8080/CAPS_TEAM6/common/home");
 
 		}

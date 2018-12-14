@@ -34,6 +34,17 @@
 
 	}
 </script>
+	<ul class="sidelist">
+		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+
+			<li><a
+				href="${listMapview.value}">
+					${listMapview.key}</a></li>
+
+		</c:forEach>
+	</ul>
+
+	<hr>
 <h1>This is the Course edit page</h1>
 <form:form action="${pageContext.request.contextPath}/Admin/newCourse"
 	mehtod="POST" modelAttribute="course">
@@ -58,7 +69,7 @@
 				<td class="nowrap">${lecturer.lemail}</td>
 				<td><a
 					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}/${lecturer.lid}.html">
-						<s:message code="label.course.delete" />
+						Add
 				</a></td>
 			</tr>
 		</c:forEach>
@@ -79,10 +90,6 @@
 				<td class="nowrap">${lecCou.firstmiddlename}</td>
 				<td class="nowrap">${lecCou.lastname}</td>
 				<td class="nowrap">${lecCou.lemail}</td>
-				<td><a
-					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}/${lecCou.lid}.html">
-						<s:message code="label.course.delete" />
-				</a></td>
 			</tr>
 		</c:forEach>
 	</table>

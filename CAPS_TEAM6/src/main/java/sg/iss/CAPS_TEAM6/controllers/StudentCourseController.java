@@ -2,6 +2,7 @@ package sg.iss.CAPS_TEAM6.controllers;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,9 +106,14 @@ public class StudentCourseController {
 	}
 	
 	@RequestMapping(value = "/viewper", method = RequestMethod.GET)
-	public ModelAndView viewper() {
+	public ModelAndView viewper(HttpSession sess) {
+		
+		MenuList usrsession=new MenuList();
+		usrsession=(MenuList) sess.getAttribute("USERSESSION");
+		
+		
 		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
-		elist = sService.viewGrade(1);
+		elist = sService.viewGrade(Integer.valueOf(usrsession.getSessionId()));
 		ModelAndView mav = new ModelAndView("ViewPerformance");
 		mav.addObject("elist",elist);
 		return mav;
@@ -119,6 +125,10 @@ public class StudentCourseController {
 	@RequestMapping(value = "/Manageenrol", method = RequestMethod.GET)
 	public ModelAndView ManageEnrol() {
 		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
+		
+		
+		
+		
 		elist = sService.gradeCourse(1);
 		ModelAndView mav = new ModelAndView("DeleteEnrollment");
 		mav.addObject("elist",elist);

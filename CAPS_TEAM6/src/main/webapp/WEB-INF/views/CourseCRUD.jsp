@@ -2,53 +2,58 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<link href="<c:url value='/css/simple.css'/>" rel="stylesheet"
-	type="text/css" />
+
+<ul class="sidelist">
+	<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+
+		<li><a href="${listMapview.value}"> ${listMapview.key}</a></li>
+
+	</c:forEach>
+</ul>
+
+<hr>
 <a href="${pageContext.request.contextPath}/Admin/newCourse">Add
 	Course</a>
 <c:if test="${fn:length(courses) gt 0 }">
 	<br />
-	<br />
-	<table class="borderAll">
+	<br />	
+
+	<table>
 		<tr>
-			<th><s:message code="label.course.index" /></th>
-			<th><s:message code="label.course.id" /></th>
-			<th><s:message code="label.course.name" /></th>
-			<th><s:message code="label.course.credit" /></th>
-			<th><s:message code="label.course.room" /></th>
-			<th><s:message code="label.course.startdate" /></th>
-			<th><s:message code="label.course.enddate" /></th>
-			<th><s:message code="label.course.studentlimit" /></th>
-			<th><s:message code="label.course.currentEnrollno" /></th>
-			<th><s:message code="label.course.fee" /></th>
-			<th><s:message code="label.course.edit" /></th>
-			<th><s:message code="label.course.delete" /></th>
+			<td>#</td>
+			<td>Id</td>
+			<td>Course Name</td>
+			<td>Credit</td>
+			<td>Room</td>
+			<td>Start Date</td>
+			<td>End Date</td>
+			<td>Student Limit</td>
+			<td>Current Enrollno</td>
+			<td>Fees</td>
+			<td>EDIT</td>
+			<td>DELETE</td>
 		</tr>
 		<c:forEach items="${courses}" var="course" varStatus="index">
-			<tr class="${index.index%2==0?'even':'odd'}">
-				<td class="nowrap">${index.index+1}</td>
-				<td class="nowrap">${course.cid}</td>
-				<td class="nowrap">${course.cname}</td>
-				<td class="nowrap">${course.credit}</td>
-				<td class="nowrap">${course.room}</td>
-				<td class="nowrap">${course.startdate}</td>
-				<td class="nowrap">${course.enddate}</td>
-				<td class="nowrap">${course.studentlimit}</td>
-				<td class="nowrap">${course.currentEnrollno}</td>
-				<td class="nowrap">${course.fee}</td>
-				<td align="center"><a
-					href="${pageContext.request.contextPath}/Admin/editCourse/${course.cid}.html">
-						<s:message code="label.course.edit" />
-				</a></td>
+			<tr>
+				<td >${index.index+1}</td>
+				<td >${course.cid}</td>
+				<td >${course.cname}</td>
+				<td >${course.credit}</td>
+				<td >${course.room}</td>
+				<td >${course.startdate}</td>
+				<td >${course.enddate}</td>
+				<td >${course.studentlimit}</td>
+				<td >${course.currentEnrollno}</td>
+				<td >${course.fee}</td>
 				<td><a
-					href="${pageContext.request.contextPath}/Admin/deleteCourse/${course.cid}.html">
-						<s:message code="label.course.delete" />
-				</a></td>
+					href="${pageContext.request.contextPath}/Admin/editCourse/${course.cid}.html">Edit</a></td>
 				<td><a
-					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}.html">
-						<s:message code="label.course.edit" />
-				</a></td>
+					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}.html">Delete</a></td>
+				<td><a
+					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}.html">Add Lecturer</a></td>
+
 			</tr>
 		</c:forEach>
 	</table>
+
 </c:if>

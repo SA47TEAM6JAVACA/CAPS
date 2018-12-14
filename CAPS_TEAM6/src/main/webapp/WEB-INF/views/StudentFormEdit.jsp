@@ -8,7 +8,17 @@
 	type="text/css" />
 </head>
 <body>
+	<ul class="sidelist">
+		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
+			<li><a
+				href="${listMapview.value}">
+					${listMapview.key}</a></li>
+
+		</c:forEach>
+	</ul>
+
+	<hr>
 <form:form method="POST" modelAttribute="Student"
 	action="${pageContext.request.contextPath}/AdminStudent/editStudent/${Students.sid}.html">
 		<center>
