@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.model.Lecturer;
 import sg.iss.CAPS_TEAM6.model.Student;
 import sg.iss.CAPS_TEAM6.model.StudentCourse;
 import sg.iss.CAPS_TEAM6.repo.CourseRepository;
@@ -92,6 +93,11 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	@Transactional
 	public ArrayList<StudentCourse> gradeCourse(int cid) {
 		return screpo.findEnrolmentForCourse(cid);
+	}
+
+	@Override
+	public ArrayList<Lecturer> listLecturerByCourseID(int cid) {
+		return lrepo.findLecturerByCid(cid);
 	}
 
 }
