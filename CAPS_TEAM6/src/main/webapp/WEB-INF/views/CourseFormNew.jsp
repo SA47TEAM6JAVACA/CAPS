@@ -9,7 +9,7 @@
 	$(document).ready(function() {
 		$("#datepicker1").datepicker({
 			dateFormat : "yy/dd/mm"
-			
+
 		});
 	});
 	$(document).ready(function() {
@@ -25,6 +25,7 @@
 
 	</c:forEach>
 </ul>
+
 <hr>
 <style>
 .firsttable {
@@ -48,11 +49,10 @@
 }
 
 .ui-datepicker {
-    background: #333;
-    border: 1px solid #555;
-    color: #EEE;
+	background: #333;
+	border: 1px solid #555;
+	color: #EEE;
 }
-
 </style>
 <h1>This is the user new form</h1>
 <div id="content">
@@ -72,28 +72,29 @@
 
 		<div id="right">
 			<div>
-				<form:input path="cid" size="11" />
+				<form:input path="cid" size="20" />
 			</div>
 			<div>
-				<form:input path="cname" size="45" />
+				<form:input path="cname" size="20" />
 			</div>
 			<div>
-				<form:input path="credit" size="10" />
+				<form:input path="credit" size="20"/>
 			</div>
 			<div>
-				<form:input path="startdate" size="20" id="datepicker1" />
+				<form:input path="startdate" size="20"
+					id="datepicker1" />
 			</div>
-			<div>
-				<form:input path="enddate" size="20" id="datepicker2" />
+			<div>			
+				<form:input path="enddate" size="20"  id="datepicker2" />
 			</div>
 			<div>
 				<form:input path="fee" size="20" />
 			</div>
 			<div>
-				<form:input path="room" size="11" />
+				<form:input path="room" size="20" />
 			</div>
 			<div>
-				<form:input path="studentlimit" size="11" />
+				<form:input path="studentlimit" size="20" />
 			</div>
 		</div>
 		<br />
@@ -102,3 +103,4 @@
 		<br />
 	</form:form>
 </div>
+

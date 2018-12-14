@@ -25,6 +25,7 @@
 
 	</c:forEach>
 </ul>
+
 <hr>
 <style>
 .firsttable {
@@ -71,18 +72,18 @@
 
 		<div id="right">
 			<div>
-				<form:input path="cid" size="11" />
+				<form:input path="cid" size="20"/>
 			</div>
 			<div>
-				<form:input path="cname" size="45" />
+				<form:input path="cname" size="20" />
 			</div>
 			<div>
-				<form:input path="credit" size="10" />
+				<form:input path="credit" size="20" />
 			</div>
 			<div>
 				<fmt:formatDate value="${course.startdate}" pattern="yyyy/mm/dd"
 					var="startd" />
-				<form:input path="startdate" size="20" value="${startd}"
+				<form:input path="startdate" size="20"" value="${startd}"
 					id="datepicker1" />
 			</div>
 			<div>
@@ -94,10 +95,10 @@
 				<form:input path="fee" size="20" />
 			</div>
 			<div>
-				<form:input path="room" size="11" />
+				<form:input path="room" size="20" />
 			</div>
 			<div>
-				<form:input path="studentlimit" size="11" />
+				<form:input path="studentlimit" size="20" />
 			</div>
 		</div>
 		<br />
@@ -106,3 +107,4 @@
 		<br />
 	</form:form>
 </div>
+
