@@ -99,10 +99,11 @@ public class ManagementCourseController {
 		Lecturer lecturer = lecturerservice.FindLecturer(lid);
 		Course course = courseservice.FindCourse(cid);
 		lecturerservice.lecturerAddCourses(lecturer, course);
-		ArrayList<Course> clist = mcservice.findAllCourse();
-		
-		ModelAndView mav = new ModelAndView("CourseCRUD");
-		mav.addObject("courses", clist);
+		ModelAndView mav = new ModelAndView("CourseLecturerNew", "course", course);
+		ArrayList<Lecturer> llist = mcservice.findAlllecturer();
+		ArrayList<Lecturer> lclist = sService.listLecturerByCourseID(cid);
+		mav.addObject("llist", llist);
+		mav.addObject("lclist", lclist);
 		
 		return mav;
 	}

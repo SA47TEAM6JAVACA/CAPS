@@ -48,7 +48,7 @@
 				<td><a
 					href="${pageContext.request.contextPath}/Admin/editCourse/${course.cid}.html">Edit</a></td>
 				<td><a
-					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}.html">Delete</a></td>
+					href="${pageContext.request.contextPath}/Admin/deleteCourse/${course.cid}.html">Delete</a></td>
 				<td><a
 					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}.html">Add Lecturer</a></td>
 
