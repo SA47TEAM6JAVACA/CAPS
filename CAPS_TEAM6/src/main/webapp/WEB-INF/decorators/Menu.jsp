@@ -9,7 +9,7 @@
 
 <ul id="cmenu">
 
-<li><a href="${pageContext.request.contextPath}/common/home">Home</a></li>
+<li><a href="${pageContext.request.contextPath}/common/logout">Home</a></li>
 <li><a href="${pageContext.request.contextPath}/common/login/admin">Admin Log In</a></li>
 <li><a href="${pageContext.request.contextPath}/common/login/student">Student Log In</a></li>
 <li><a href="${pageContext.request.contextPath}/common/login/lecturer">Lecturer Log In</a></li>

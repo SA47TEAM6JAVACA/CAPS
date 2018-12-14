@@ -8,6 +8,8 @@ public interface AdminService {
 
 	
 	ArrayList<Admin> findAllAdmin();
+
+	int findID(String username);
 	
 	
 }

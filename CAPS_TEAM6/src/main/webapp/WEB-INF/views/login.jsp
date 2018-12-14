@@ -21,15 +21,13 @@
 		<tr>
 			<td>
 	Username:
-			<td colspan="3"><form:input path="username" size="40" />
+			<td colspan="3"><form:input path="username"  />
 </tr>
 		<tr>
-			<td>Password</td>
-			<td colspan="3"><form:password path="pass" size="40" />
+			<td>Password:</td>
+			<td colspan="3"><form:password path="pass"/>
 
-			</td>
-
-			<form:errors path="pass" cssstyle="color:red" />
+			
 		</td>
 </tr>
 		<tr>

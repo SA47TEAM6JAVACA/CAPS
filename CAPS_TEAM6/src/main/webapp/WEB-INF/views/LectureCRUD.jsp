@@ -36,7 +36,7 @@
 </c:forEach>
 </ul>	
 <hr>
-<a href="${pageContext.request.contextPath}/lecturer/new">Add Lecturer</a>
+<a href="${pageContext.request.contextPath}/lecturer/new.html">Add Lecturer</a>
   
   <table>
      <tr>

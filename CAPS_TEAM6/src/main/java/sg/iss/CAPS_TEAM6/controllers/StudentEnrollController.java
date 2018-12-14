@@ -49,6 +49,15 @@ public class StudentEnrollController {
 		return service.findAllCourse();
 	}*/
 
+	@RequestMapping(value = "/courselist", method = RequestMethod.GET)
+	public ModelAndView listCourse() {
+		ModelAndView mav = new ModelAndView("CourseList");
+		ArrayList<Course> courselist = service.findAllcours();
+		mav.addObject("courses", courselist);
+		return mav;
+	}
+	
+	
 	@RequestMapping(value = "/enroll", method = RequestMethod.POST)
 	public ModelAndView saveCourseEnroll(@ModelAttribute @Valid StudentCourse studentcourse,HttpSession ss) {
 		ModelAndView mav = new ModelAndView("EnrollCourse");

@@ -2,6 +2,15 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<body>
+
 	<ul class="sidelist">
 		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
@@ -13,33 +22,10 @@
 	</ul>
 
 	<hr>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<<<<<<< HEAD
-<body>
-=======
-
 <link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
     type="text/css" />
  
-</head>
-<body>
- 
-    <ul class="sidelist">
-        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
- 
-            <li><a
-                href="${listMapview.value}">
-                    ${listMapview.key}</a></li>
- 
-        </c:forEach>
-    </ul>
- 
-    <hr>
->>>>>>> stash
+
   <form:form action="${pageContext.request.contextPath}/lecturer/new.html" method="POST" modelAttribute="lecturer">
     ID: <form:input path="lid" size="10" readonly="true" /> <br/>
     FirstName: <form:input path="firstmiddlename" size="40"/> <form:errors path="firstmiddlename" cssStyle="color:red;"/><br/>

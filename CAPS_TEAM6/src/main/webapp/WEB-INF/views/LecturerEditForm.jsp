@@ -8,6 +8,9 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
+<body>
+
 <ul class="sidelist">
 		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
@@ -19,7 +22,7 @@
 	</ul>
 
 	<hr>
-<body>
+
   <form:form action="${pageContext.request.contextPath}/lecturer/list.html" method="POST" modelAttribute="lecturer">
      ID: <form:input path="lid" size="10" readonly="true"/> 
     FirstName: <form:input path="firstmiddlename" size="40"/> <form:errors path="firstmiddlename" cssStyle="color:red;"/><br/>

@@ -98,9 +98,11 @@ us.setRole(role);
 		mav = authenticate(user, role);
 		//mav.addObject("userobj", user);
 		
+		
+		int id=getID(role,user.getUsername());
 
 		MenuList ml = getMenu(role);
-		String sess=String.valueOf(service.findID("kk@gmail.com"));
+		String sess=id+"";
 		ml.setSessionId(sess);
 		
 		
@@ -110,6 +112,22 @@ us.setRole(role);
 
 
 		return mav;
+	}
+
+	private int getID(String role, String username) {
+		// TODO Auto-generated method stub
+		int id=0;
+		if(role.equalsIgnoreCase("student")) {
+			id=service.findID(username);
+		}else if(role.equalsIgnoreCase("admin")) {
+			id=adservice.findID(username);	
+		}
+		else if(role.equalsIgnoreCase("lecturer")) {
+			id=lservice.findID(username);
+		}
+		
+		
+		return id;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -137,7 +155,7 @@ us.setRole(role);
 
 			for (Admin student : alladmin) {
 				if (student.getAemail().equalsIgnoreCase(user.getUsername()))
-					return new ModelAndView("redirect:/student/enroll");
+					return new ModelAndView("redirect:/lecturer/list");
 			}
 		} else if (role.equalsIgnoreCase("lecturer")) {
 			List<Lecturer> alllect;
@@ -145,7 +163,7 @@ us.setRole(role);
 
 			for (Lecturer student : alllect) {
 				if (student.getLemail().equalsIgnoreCase(user.getUsername()))
-					return new ModelAndView("redirect:/lecturer/list");
+					return new ModelAndView("redirect:/StudentCourse/listCoursesTaughtByLecturer");
 			}
 		}
 
@@ -173,7 +191,7 @@ us.setRole(role);
 			h = new HashMap<>();
 			
 			h.put("Grades and GPA", "http://localhost:8080/CAPS_TEAM6/StudentCourse/viewper");
-			h.put("View Courses", "http://localhost:8080/CAPS_TEAM6/");
+			h.put("View Courses", "http://localhost:8080/CAPS_TEAM6/student/courselist");
 			h.put("Enroll for a Course", "http://localhost:8080/CAPS_TEAM6/student/enroll");
 			h.put("Logout", "http://localhost:8080/CAPS_TEAM6/common/home");
 
@@ -181,8 +199,7 @@ us.setRole(role);
 
 			
 			h = new HashMap<>();
-			h.put("View Courses Taught", "http://localhost:8080/CAPS_TEAM6/lecturer/list");
-			h.put("View Course Enrolment", "http://localhost:8080/CAPS_TEAM6/");
+			h.put("View Courses Taught", "http://localhost:8080/CAPS_TEAM6/StudentCourse/listCoursesTaughtByLecturer");
 			h.put("Grade a Course", "http://localhost:8080/CAPS_TEAM6/StudentCourse/listgrade");
 			h.put("View a Student Performance", "http://localhost:8080/CAPS_TEAM6/StudentCourse/viewper");
 			h.put("Log Out", "http://localhost:8080/CAPS_TEAM6/common/home");

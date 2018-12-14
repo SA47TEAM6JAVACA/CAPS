@@ -63,7 +63,9 @@ private void initLecturerBinder(WebDataBinder binder)
 	
 	@RequestMapping(value="/new", method = RequestMethod.GET)
 	public ModelAndView newLecturerPage() {
-		ModelAndView mav = new ModelAndView("LecturerNewForm", "lecturer", new Lecturer());
+		ModelAndView mav = new ModelAndView("LecturerNewForm");
+		
+		mav.addObject("lecturer", new Lecturer());
 		return mav;
 		
 	}
@@ -78,7 +80,6 @@ private void initLecturerBinder(WebDataBinder binder)
 		mav.addObject("lecturers",llist);
 		return mav;
 	}
-	
 	
 /*	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public ModelAndView SelectLecturerPage() {
@@ -144,7 +145,7 @@ private void initLecturerBinder(WebDataBinder binder)
 		if(result.hasErrors())
 			return new ModelAndView("LecturerEditForm");
 		lecturerservice.UpdateLecturer(lecturer);
-		ModelAndView mav=new ModelAndView("LectureCRUD");
+		ModelAndView mav=new ModelAndView();
 		redirectAttributes.addFlashAttribute("message", "Error Rediection");
 		return mav;
 	}

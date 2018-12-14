@@ -21,6 +21,8 @@ public interface LecturerService {
 	void lecturerAddCourses(Lecturer l, Course c);
 	public ArrayList<String> findAllLecturerIDs();
 
+	int findID(String username);
+
 }
 
 

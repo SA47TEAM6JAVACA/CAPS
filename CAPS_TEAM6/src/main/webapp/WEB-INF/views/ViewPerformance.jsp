@@ -3,6 +3,13 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
 	<ul class="sidelist">
 		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
@@ -14,13 +21,6 @@
 	</ul>
 
 	<hr>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
   <h2> Student grades for cid 1 :
  </h2>
  <c:if test="${fn:length(elist) gt 0}">

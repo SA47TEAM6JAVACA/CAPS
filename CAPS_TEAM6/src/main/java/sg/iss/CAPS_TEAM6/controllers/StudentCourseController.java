@@ -59,6 +59,7 @@ public class StudentCourseController {
    	binder.addValidators(scValidator);
    }
 
+   
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listAll() {
 		ModelAndView mav = new ModelAndView("ManageEnrol");
@@ -147,6 +148,8 @@ public class StudentCourseController {
 	@RequestMapping(value = "/Manageenrol/{id}", method = RequestMethod.GET)
 	public ModelAndView ManageEnrol(@PathVariable String name, @ModelAttribute  @Valid  StudentCourse studentcourse) {
 		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
+		
+		
 		
 		elist = sService.gradeCourse(1);
 

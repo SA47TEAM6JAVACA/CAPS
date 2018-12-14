@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import sg.iss.CAPS_TEAM6.model.Course;
 import sg.iss.CAPS_TEAM6.model.Lecturer;
 import sg.iss.CAPS_TEAM6.repo.LecturerRepository;
@@ -42,6 +44,14 @@ public class LecturerServiceImpl implements LecturerService {
 	public void RemoveLecturer(Lecturer l) {
 		lrepo.delete(l);
 
+	}
+	
+
+	@Override
+	@Transactional
+	public int findID(String username) {
+		// TODO Auto-generated method stub
+		return lrepo.findLecturerID(username);
 	}
 	
 	@Override

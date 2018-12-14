@@ -12,7 +12,7 @@
 <div class="wrap">
 <div class="logo">
 
-<img src="file:///C:/Users/dodo/git/CAPS/CAPS_TEAM6/logo.jpeg" 	>
+<img src="${pageContext.request.contextPath}/image/logo.jpeg" 	>
 </div>
 <div class="header"><%@include file="Menu.jsp"%>
 </div>
