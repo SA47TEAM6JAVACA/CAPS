@@ -39,7 +39,7 @@ public class CourseServiceImpl implements CourseService {
 	@Transactional
 	public Course editCourse(Course c) {
 		// TODO Auto-generated method stub
-		return (Course)repo.saveAndFlush(c);
+		return (Course)crepo.saveAndFlush(c);
 	}
 
 

@@ -92,7 +92,7 @@ Course cou=new Course();
 		studentcourse.setStudent(s);
 		studentcourse.setCourse(service.findeCourse(courseid));
 		studentcourse.setEnrollDate(date);
-		studentcourse.setScore(0.0);
+		studentcourse.setScore(0.00);
 		
 		String message = "New studentcourse " + studentcourse.getScid() + " was successfully created.";
 

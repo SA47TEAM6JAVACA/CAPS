@@ -24,7 +24,7 @@ public class StudentCourse implements Serializable {
 	@Column(name="enroll_date")
 	private Date enrollDate;
 
-	private Long score;
+	private double score;
 
 	//bi-directional many-to-one association to Course
 	@ManyToOne
@@ -67,7 +67,7 @@ public class StudentCourse implements Serializable {
 		return this.score;
 	}
 
-	public void setScore(Long score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 

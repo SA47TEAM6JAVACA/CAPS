@@ -63,9 +63,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return null;
 	}
 
-<<<<<<< HEAD
 
-=======
 	@Override
 	public StudentCourse updateStudent(StudentCourse s) {
 		// TODO Auto-generated method stub
@@ -103,5 +101,4 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return lrepo.findLecturerByCid(cid);
 	}
 
->>>>>>> refs/remotes/origin/master
 }
