@@ -15,7 +15,7 @@
 			dateFormat : "yy/mm/dd"
 		});
 	});
-	function addrow(lectid,fname,lname,email) {
+	function addrow(lectid, fname, lname, email) {
 		var tr = tb.insertRow();
 		var td1 = tr.insertCell(0);
 		var td2 = tr.insertCell(1);
@@ -24,14 +24,13 @@
 		td1.innerText = lectid;
 		td2.innerText = fname;
 		td3.innerText = lname;
-		td4.innerText = email;	
-		tr.onclick = function(){
-            var cell = this.getElementsByTagName("td")[0];
-            var id = cell.innerHTML;
-            alert("Remove lecturer from this course" + id);
-            $('tr:last', this).remove();
-        };
-
+		td4.innerText = email;
+		tr.onclick = function() {
+			var cell = this.getElementsByTagName("td")[0];
+			var id = cell.innerHTML;
+			alert("Remove lecturer from this course" + id);
+			$('tr:last', this).remove();
+		};
 
 	}
 </script>
@@ -41,24 +40,6 @@
   ID:<form:input path="cid" size="11" readonly="true" />
 	<br />
   Name: <form:input path="cname" size="45" />
-	<br />
-  Credit:<form:input path="credit" size="10" />
-	<br />
-	<fmt:formatDate value="${course.startdate}" pattern="yyyy/mm/dd"
-		var="startd" />
-  Start Date:<form:input path="startdate" size="20" value="${startd}"
-		id="datepicker1" />
-	<br />
-	<fmt:formatDate value="${course.enddate}" pattern="yyyy/mm/dd"
-		var="endd" />
-  End Date:<form:input path="enddate" size="20" value="${endd}"
-		id="datepicker2" />
-	<br />
-  Fee:<form:input path="fee" size="20" />
-	<br />
-  Room:<form:input path="room" size="11" />
-	<br />
-  Student limit:<form:input path="studentlimit" size="11" />
 	<br />
 	<table class="borderAll">
 		<tr>
@@ -82,5 +63,29 @@
 			</tr>
 		</c:forEach>
 	</table>
+
+	<table class="borderAll">
+		<tr>
+			<th><s:message code="label.course.index" /></th>
+			<th><s:message code="label.course.id" /></th>
+			<th><s:message code="label.course.name" /></th>
+			<th><s:message code="label.course.credit" /></th>
+			<th><s:message code="label.course.room" /></th>
+		</tr>
+		<c:forEach items="${lclist}" var="lecCou" varStatus="index">
+			<tr class="${index.index%2==0?'even':'odd'}">
+				<td class="nowrap">${index.index+1}</td>
+				<td class="nowrap">${lecCou.lid}</td>
+				<td class="nowrap">${lecCou.firstmiddlename}</td>
+				<td class="nowrap">${lecCou.lastname}</td>
+				<td class="nowrap">${lecCou.lemail}</td>
+				<td><a
+					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}/${lecCou.lid}.html">
+						<s:message code="label.course.delete" />
+				</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+
 
 </form:form>
