@@ -10,5 +10,7 @@ public interface CourseService {
 	ArrayList<Course> findAllCourse();
 	
 	Course findeCourse(int cid);
+
+	Course editCourse(Course c);
 	
 }

@@ -33,5 +33,12 @@ public class CourseServiceImpl implements CourseService {
 		// TODO Auto-generated method stub
 		return (Course)repo.findById(cid).get();
 	}
+	
+	@Override
+	@Transactional
+	public Course editCourse(Course c) {
+		// TODO Auto-generated method stub
+		return (Course)repo.saveAndFlush(c);
+	}
 
 }
