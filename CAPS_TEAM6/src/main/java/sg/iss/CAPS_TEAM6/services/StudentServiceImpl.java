@@ -34,6 +34,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
+	@Transactional
 	public int findID(String username) {
 		// TODO Auto-generated method stub
 		return repo.findStuID(username);
