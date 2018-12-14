@@ -28,7 +28,7 @@ import sg.iss.CAPS_TEAM6.model.Student;
 import sg.iss.CAPS_TEAM6.services.AdminService;
 import sg.iss.CAPS_TEAM6.services.LecturerService;
 import sg.iss.CAPS_TEAM6.services.StudentService;
-import sg.iss.CAPS_TEAM6.validator.LoginValidator;
+
 
 @RequestMapping(value = "/common")
 @Controller
@@ -47,16 +47,15 @@ public class CommonController {
 	AdminService adservice;
 	
 	
-	@Autowired
-	LoginValidator lv;
 	
 	
-	@InitBinder("LoginValidator")
+	/*
+	@InitBinder("UserSession")
 	private void initLogin(WebDataBinder binder) {
 		
 		binder.addValidators(lv);
 		
-	}
+	}*/
 	
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -69,9 +68,11 @@ public class CommonController {
 	public ModelAndView login( @ModelAttribute UserSession user,@PathVariable("role") String role, HttpSession session) {
 		ModelAndView mav = new ModelAndView("login");
 		
-		user.setRole(role);
+	
+UserSession us=new UserSession();
 
-		mav.addObject("user", new UserSession());
+us.setRole(role);
+		mav.addObject("userobj", us);
 
 		/*MenuList ml = getMenu(role);
 		ml.setSessionId("user");
@@ -82,27 +83,30 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "/authenticate/{role}", method = RequestMethod.POST)
-	public ModelAndView logic( @Valid  @ModelAttribute("user") UserSession user,
-			@PathVariable("role") String role, HttpSession session,BindingResult result,final  RedirectAttributes redirectAttibutes) {
+	public ModelAndView logic(@ModelAttribute UserSession user,@PathVariable("role") String role,
+			HttpSession session,BindingResult result,final  RedirectAttributes redirectAttibutes) {
 		
 		String error="";
-		ModelAndView mav=new ModelAndView("login/"+role) ;
-		if (result.hasErrors())
+		ModelAndView mav=new ModelAndView() ;
+		/*if (result.hasErrors())
 			{error="Error";
 			return new ModelAndView("redirect:/common/home");
-			}
+			}*/
 		
 		System.out.println("user authentication : " + user.getUsername() + role);
 
 		mav = authenticate(user, role);
-		mav.addObject("user", user);
+		//mav.addObject("userobj", user);
 		
 
 		MenuList ml = getMenu(role);
-		ml.setSessionId(String.valueOf(service.findID(user.getUsername())));
+		String sess=String.valueOf(service.findID("kk@gmail.com"));
+		ml.setSessionId(sess);
+		
+		
 		
 		session.setAttribute("USERSESSION", ml);
-redirectAttibutes.addFlashAttribute("message",error);
+//redirectAttibutes.addFlashAttribute("message",error);
 
 
 		return mav;

@@ -16,19 +16,19 @@
 
 </head> <body>
 <div >
-<form:form modelAttribute="user" method="post" action="${pageContext.request.contextPath}/common/authenticate/${user.role }" >
+<form:form modelAttribute="userobj" method="post" action="${pageContext.request.contextPath}/common/authenticate/${userobj.role }" >
 	<table class="framed" style="margin:auto;width:300px;display:block" >
 		<tr>
 			<td>
-			Username:
+	Username:
 			<td colspan="3"><form:input path="username" size="40" />
-			<form:errors path="username" cssstyle="color:red" /></td>
+			 <form:errors path="username" cssstyle="color:red" /></td>
 		</tr>
 		<tr>
 			<td>Password</td>
 			<td colspan="3"><form:password path="pass" size="40" />
 			<form:errors path="pass" cssstyle="color:red" />
-			</td>
+		</td>
 		</tr>
 		<tr>
 			<td colspan="4">&nbsp;</td>
