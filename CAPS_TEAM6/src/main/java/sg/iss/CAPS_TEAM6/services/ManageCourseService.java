@@ -3,8 +3,10 @@ package sg.iss.CAPS_TEAM6.services;
 import java.util.ArrayList;
 
 import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.model.Lecturer;
 
 public interface ManageCourseService {
+	
 	ArrayList<Course> findAllCourse();
 
 	Course findCourseById(Integer cid);
@@ -15,5 +17,9 @@ public interface ManageCourseService {
 
 	int updateCourse(Course c);
 
-	int removeCourse(Course c);
+	int removeCourse(Course c);	
+	
+	int addCourseLecturer(Lecturer l);
+	
+	ArrayList<Lecturer> findAlllecturer();
 }

@@ -37,17 +37,14 @@
 				<td class="nowrap">${course.currentEnrollno}</td>
 				<td class="nowrap">${course.fee}</td>
 				<td align="center"><a
-					href="${pageContext.request.contextPath}/Admin/editCourse/${course.cid}.html">
+					href="${pageContext.request.contextPath}//Admin/editCourse/${course.cid}.html">
 						<s:message code="label.course.edit" />
 				</a></td>
 				<td><a
-					href="${pageContext.request.contextPath}/Admin/deleteCourse/${course.cid}.html">
+					href="${pageContext.request.contextPath}/Admin/editCourse/${course.cid}.html">
 						<s:message code="label.course.delete" />
 				</a></td>
-				<td><a
-					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}.html">
-						<s:message code="label.course.edit" />
-				</a></td>
+
 			</tr>
 		</c:forEach>
 	</table>

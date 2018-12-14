@@ -117,7 +117,7 @@ table
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
-	background: #fff;
+	background: AliceBlue;
 	border-collapse: collapse;
 	
 }
@@ -131,7 +131,7 @@ th
 }
 td
 {
-	color: #669;
+	color: 000080;
 	padding: 9px 8px 0px 8px;
 	
 }
@@ -139,7 +139,11 @@ tbody tr:hover td
 {
 	color: #009;
 }
-
+.header{
+	background-color: D3D3D3; 
+}
+.nowrap{	
+}
 .bclass button {
     background-color: #002b55; 
     border: none;

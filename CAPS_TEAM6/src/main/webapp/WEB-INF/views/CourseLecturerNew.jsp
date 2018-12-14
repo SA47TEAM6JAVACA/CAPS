@@ -15,6 +15,25 @@
 			dateFormat : "yy/mm/dd"
 		});
 	});
+	function addrow(lectid,fname,lname,email) {
+		var tr = tb.insertRow();
+		var td1 = tr.insertCell(0);
+		var td2 = tr.insertCell(1);
+		var td3 = tr.insertCell(2);
+		var td4 = tr.insertCell(3);
+		td1.innerText = lectid;
+		td2.innerText = fname;
+		td3.innerText = lname;
+		td4.innerText = email;	
+		tr.onclick = function(){
+            var cell = this.getElementsByTagName("td")[0];
+            var id = cell.innerHTML;
+            alert("Remove lecturer from this course" + id);
+            $('tr:last', this).remove();
+        };
+
+
+	}
 </script>
 <h1>This is the Course edit page</h1>
 <form:form action="${pageContext.request.contextPath}/Admin/newCourse"
@@ -41,8 +60,27 @@
 	<br />
   Student limit:<form:input path="studentlimit" size="11" />
 	<br />
-	<input type="submit" value="Submit" />
-	<br />
-	<input type="reset" value="Cancel" />
-	<br />
+	<table class="borderAll">
+		<tr>
+			<th><s:message code="label.course.index" /></th>
+			<th><s:message code="label.course.id" /></th>
+			<th><s:message code="label.course.name" /></th>
+			<th><s:message code="label.course.credit" /></th>
+			<th><s:message code="label.course.room" /></th>
+		</tr>
+		<c:forEach items="${llist}" var="lecturer" varStatus="index">
+			<tr class="${index.index%2==0?'even':'odd'}">
+				<td class="nowrap">${index.index+1}</td>
+				<td class="nowrap">${lecturer.lid}</td>
+				<td class="nowrap">${lecturer.firstmiddlename}</td>
+				<td class="nowrap">${lecturer.lastname}</td>
+				<td class="nowrap">${lecturer.lemail}</td>
+				<td><a
+					href="${pageContext.request.contextPath}/Admin/addlecturer/${course.cid}/${lecturer.lid}.html">
+						<s:message code="label.course.delete" />
+				</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+
 </form:form>
