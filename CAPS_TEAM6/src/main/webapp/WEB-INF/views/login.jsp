@@ -22,23 +22,16 @@
 			<td>
 	Username:
 			<td colspan="3"><form:input path="username" size="40" />
-<<<<<<< HEAD
-			<form:errors path="username"  /></td>
-=======
-			 <form:errors path="username" cssstyle="color:red" /></td>
->>>>>>> branch 'master' of https://github.com/SA47TEAM6JAVACA/CAPS.git
-		</tr>
+</tr>
 		<tr>
 			<td>Password</td>
 			<td colspan="3"><form:password path="pass" size="40" />
-<<<<<<< HEAD
-			<form:errors path="pass" />
+
 			</td>
-=======
+
 			<form:errors path="pass" cssstyle="color:red" />
 		</td>
->>>>>>> branch 'master' of https://github.com/SA47TEAM6JAVACA/CAPS.git
-		</tr>
+</tr>
 		<tr>
 			<td colspan="4">&nbsp;</td>
 		</tr>
