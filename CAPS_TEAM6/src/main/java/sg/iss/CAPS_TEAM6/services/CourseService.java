@@ -2,6 +2,7 @@ package sg.iss.CAPS_TEAM6.services;
 
 import java.util.ArrayList;
 
+
 import sg.iss.CAPS_TEAM6.model.Course;
 
 
@@ -11,4 +12,13 @@ public interface CourseService {
 	
 	Course findeCourse(int cid);
 	
+
+
+	 Course FindCourse(int cid);
+
+	ArrayList<Course> findAllcours();
+
 }
+
+
+

@@ -1,5 +1,6 @@
 package sg.iss.CAPS_TEAM6.services;
 
+
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
@@ -15,7 +16,7 @@ import sg.iss.CAPS_TEAM6.repo.CourseRepository;
 public class CourseServiceImpl implements CourseService {
 
 	@Resource
-	CourseRepository repo;
+	CourseRepository crepo;
 	
 	
 	@Override
@@ -23,7 +24,7 @@ public class CourseServiceImpl implements CourseService {
 	public ArrayList<Course> findAllCourse() {
 		// TODO Auto-generated method stub
 
-		return (ArrayList<Course>) repo.findAll();
+		return (ArrayList<Course>) crepo.findAll();
 	}
 
 
@@ -31,7 +32,18 @@ public class CourseServiceImpl implements CourseService {
 	@Transactional
 	public Course findeCourse(int cid) {
 		// TODO Auto-generated method stub
-		return (Course)repo.findById(cid).get();
+		return (Course)crepo.findById(cid).get();
+	}
+
+
+	@Override
+	public Course FindCourse(int cid) {
+		System.out.println(cid);
+		return crepo.findById(cid).get();
+	}
+	
+	public ArrayList<Course> findAllcours(){
+	return (ArrayList<Course>) crepo.findAll();
 	}
 
 }
