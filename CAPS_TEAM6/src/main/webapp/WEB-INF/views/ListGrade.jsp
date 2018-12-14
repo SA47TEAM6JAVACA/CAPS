@@ -21,9 +21,10 @@
           <td> ${enrolment.course.cname}  </td> 
           <td> ${enrolment.course.credit}  </td> 
           <td> ${enrolment.score}  </td>
+
           <td> ${enrolment.scid}  </td>
           <td><a href="${pageContext.request.contextPath}/StudentCourse/edit/${enrolment.scid}">Grade</a></td>
-         
+
           </tr>
      </c:forEach>
   </table>

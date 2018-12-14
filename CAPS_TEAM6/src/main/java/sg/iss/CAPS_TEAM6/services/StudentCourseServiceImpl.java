@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.model.Lecturer;
 import sg.iss.CAPS_TEAM6.model.Student;
 import sg.iss.CAPS_TEAM6.model.StudentCourse;
 import sg.iss.CAPS_TEAM6.repo.CourseRepository;
@@ -59,8 +60,9 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	}
 
 	@Override
+	@Transactional
 	public void removeStudent(StudentCourse s) {
-		// TODO Auto-generated method stub
+		screpo.delete(s);
 
 	}
 
@@ -70,7 +72,8 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return screpo.findStudentsEnrolledForCourse(cid);
 		
 	}
-
+	
+	
 	@Override
 	@Transactional
 	public ArrayList<Course> listCoursesTaughtByLecturer(int lid) {
@@ -85,6 +88,14 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	public ArrayList<StudentCourse> viewGrade(int stuid) {
 		return screpo.findStudentBySTUID(stuid);
 	}
+
+	@Override
+	public ArrayList<Lecturer> listLecturerByCourseID(int cid) {
+		return lrepo.findLecturerByCid(cid);
+		
+	}
+
+
+	}
 	
 
-}

@@ -11,8 +11,8 @@ import sg.iss.CAPS_TEAM6.model.Student;
 
 
 
-
 public interface StudentCourseRepository extends JpaRepository<StudentCourse,Integer > {
+
 	
 	@Query ("Select e from StudentCourse e where e.course.cid = :cid")
 	ArrayList<StudentCourse> findEnrolmentForCourse(@Param("cid") int cid);
@@ -20,11 +20,27 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse,Int
 	@Query ("Select e.student from StudentCourse e where e.course.cid = :cid")
 	ArrayList<Student> findStudentsEnrolledForCourse(@Param("cid") int cid);
 
+
+
+
+
 	@Query("Select e from StudentCourse e where e.scid=:scid")
+
 	StudentCourse findStudentCourseBySCID(@Param("scid") int scid);
+	
+	
+
 	
 	
 	@Query("Select e from StudentCourse e where e.student.sid=:stuid")
 	ArrayList<StudentCourse> findStudentBySTUID(@Param("stuid") int stuid);
 	
+	
+	
+	
+	
+	
+	
+	
+
 }

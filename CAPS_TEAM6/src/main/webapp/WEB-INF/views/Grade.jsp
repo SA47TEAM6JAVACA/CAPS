@@ -17,7 +17,7 @@ Course id:<form:input path="course.cid" size="10" readonly="true"/><br/>
   Credit:<form:input path="course.credit" size="10" readonly="true"/><br/> 
   
 attendence<form:input path="attendence" size="10" /><br/> 
-Score: <form:input path="score" size="50"  type="number" name="num" min="0" max="100"/><form:errors path="score" cssStyle="color:red;"/> <br/>
+Score: <form:input path="score" size="50"  /><form:errors path="score" cssStyle="color:red;"/> <br/>
 <input type="submit" value="Submit"/><br/>
 <input type="reset" value="Cancel"/><br/>
 

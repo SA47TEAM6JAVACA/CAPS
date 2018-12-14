@@ -9,22 +9,31 @@
 	href="${ss}" />
 </head>
 <body>
-<h1> Student CRUD Demo</h1>
-<%@include file="Menu.jsp"%>
-	<table style="width: 100%">
-		<tr>
-			<td>
-				<div>
-					<dec:body />
-				</div>
-			</td>
-		</tr>
-	</table>
-	
-	<!-- ======== Footer ======== -->
-				<div id="footer" align="center">
+<div class="wrap">
+<div class="logo">
+
+<img src="file:///C:/Users/dodo/git/CAPS/CAPS_TEAM6/logo.jpeg" 	>
+</div>
+<div class="header"><%@include file="Menu.jsp"%>
+</div>
+
+
+
+<!-- ========= Body =========== -->
+
+<div class="content">
+<br><dec:body />
+</div>
+
+
+<!-- ======== Footer ======== -->
+
+	<div class="footer" align="center">
 				  <hr>
 					<small> &copy; ISS NUS SA47 2018 </small>
 				</div>
+</div>
+	
+			
 </body>
 </html>

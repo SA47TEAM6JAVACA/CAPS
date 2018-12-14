@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import sg.iss.CAPS_TEAM6.model.Lecturer;
+import sg.iss.CAPS_TEAM6.model.Course;
+import sg.iss.CAPS_TEAM6.services.CourseService;
 import sg.iss.CAPS_TEAM6.services.LecturerService;
 import sg.iss.CAPS_TEAM6.validator.LecturerValidator;
 
@@ -25,6 +28,8 @@ import sg.iss.CAPS_TEAM6.validator.LecturerValidator;
 public class LecturerController {
 @Autowired
 LecturerService lecturerservice;
+@Autowired
+CourseService courseservice;
 	
 @Autowired
 private LecturerValidator lValidator;
@@ -62,6 +67,65 @@ private void initLecturerBinder(WebDataBinder binder)
 		return mav;
 		
 	}
+
+	
+	@RequestMapping(value="/new",method=RequestMethod.POST)
+	public ModelAndView newLecturerPage(@ModelAttribute Lecturer lecturer)
+	{
+		lecturerservice.UpdateLecturer(lecturer);
+		ModelAndView mav = new ModelAndView("LectureCRUD");
+		ArrayList<Lecturer> llist=lecturerservice.findAllenrols();
+		mav.addObject("lecturers",llist);
+		return mav;
+	}
+	
+	
+/*	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	public ModelAndView SelectLecturerPage() {
+		ModelAndView mav = new ModelAndView("select");
+		ArrayList<Course> courselist= courseservice.findAllcours();
+		ArrayList<String> cname=new ArrayList<>();
+		ArrayList<Integer> cid=new ArrayList<>();
+		for(Course c   :courselist)
+		{
+			cname.add(c.getCname());
+			cid.add(c.getCid());
+		}
+		mav.addObject("courselist", cname);
+		
+		ArrayList<Lecturer> eidList = lecturerservice.findAllenrols();
+		ArrayList<String> name=new ArrayList<>();
+		ArrayList<Integer> id=new ArrayList<>();
+		for(Lecturer l   :eidList)
+		{
+			name.add(l.getFirstmiddlename()+ l.getLastname());
+			id.add(l.getLid());
+		}
+		mav.addObject("eidlist", name);
+		return mav;
+	}
+	
+	
+*/	
+	
+	@RequestMapping(value="/new_course/lecturer/{lid}/course/{cid}", method=RequestMethod.GET)
+	public ModelAndView addLecturerCourse(@PathVariable Integer lid, @PathVariable Integer cid) {
+		
+		Lecturer lecturer = lecturerservice.FindLecturer(lid);
+		Course course = courseservice.FindCourse(cid);
+		lecturerservice.lecturerAddCourses(lecturer, course);
+		ModelAndView mav = new ModelAndView("LectureCRUD");
+	/*	ModelAndView mav = new ModelAndView();
+		String message = "New user " + user.getUserId() + " was successfully created.";
+
+		uService.createUser(user);
+		mav.setViewName("redirect:/admin/user/list");
+
+		redirectAttributes.addFlashAttribute("message", message);
+		return mav;*/
+	    return mav;
+	}
+	
 	
 
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.GET)
@@ -71,7 +135,7 @@ private void initLecturerBinder(WebDataBinder binder)
 		ModelAndView mav=new ModelAndView("LecturerEditForm","lecturer",lecturer);
 		return mav;
 	}
-	
+
 	@RequestMapping(value="/edit/{lid}",method=RequestMethod.POST)
 	public ModelAndView editLecturerPage(@ModelAttribute @Valid Lecturer lecturer, BindingResult result,
 			final RedirectAttributes redirectAttributes)
@@ -85,6 +149,7 @@ private void initLecturerBinder(WebDataBinder binder)
 		return mav;
 	}
 	
+	
 	@RequestMapping(value="/delete/{lid}",method=RequestMethod.GET)
 	public ModelAndView deleteLecturer(@PathVariable Integer lid)
 	{
@@ -95,4 +160,5 @@ private void initLecturerBinder(WebDataBinder binder)
 		mav.addObject("lecturers",llist);
 		return mav;
 	}
+	
 }
