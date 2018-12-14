@@ -51,5 +51,11 @@ public class LecturerServiceImpl implements LecturerService {
 		courses.getLecturers().add(l);
 		lrepo.save(l);
 	}
+	
+		
+		@Override
+	public ArrayList<String> findAllLecturerIDs(){
+	    return lrepo.findAllLecturerIDs();
+		}
 
 }

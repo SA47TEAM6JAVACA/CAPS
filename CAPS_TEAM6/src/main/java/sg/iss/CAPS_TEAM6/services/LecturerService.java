@@ -19,7 +19,7 @@ public interface LecturerService {
 
 	void RemoveLecturer(Lecturer l);
 	void lecturerAddCourses(Lecturer l, Course c);
-
+	public ArrayList<String> findAllLecturerIDs();
 
 }
 

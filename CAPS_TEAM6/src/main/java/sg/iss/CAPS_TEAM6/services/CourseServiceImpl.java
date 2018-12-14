@@ -1,4 +1,7 @@
 package sg.iss.CAPS_TEAM6.services;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -14,5 +17,9 @@ public class CourseServiceImpl implements CourseService {
 	public Course FindCourse(int cid) {
 		System.out.println(cid);
 		return crepo.findById(cid).get();
+	}
+	
+	public ArrayList<Course> findAllcours(){
+	return (ArrayList<Course>) crepo.findAll();
 	}
 }

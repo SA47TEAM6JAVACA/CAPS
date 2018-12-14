@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import sg.iss.CAPS_TEAM6.model.Lecturer;
 import sg.iss.CAPS_TEAM6.model.Course;
 import sg.iss.CAPS_TEAM6.services.CourseService;
@@ -51,6 +52,34 @@ CourseService courseservice;
 	}
 	
 	
+	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	public ModelAndView SelectLecturerPage() {
+		ModelAndView mav = new ModelAndView("select");
+		ArrayList<Course> courselist= courseservice.findAllcours();
+		ArrayList<String> cname=new ArrayList<>();
+		ArrayList<Integer> cid=new ArrayList<>();
+		for(Course c   :courselist)
+		{
+			cname.add(c.getCname());
+			cid.add(c.getCid());
+		}
+		mav.addObject("courselist", cname);
+		
+		ArrayList<Lecturer> eidList = lecturerservice.findAllenrols();
+		ArrayList<String> name=new ArrayList<>();
+		ArrayList<Integer> id=new ArrayList<>();
+		for(Lecturer l   :eidList)
+		{
+			name.add(l.getFirstmiddlename()+ l.getLastname());
+			id.add(l.getLid());
+		}
+		mav.addObject("eidlist", name);
+		return mav;
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/new_course/lecturer/{lid}/course/{cid}", method=RequestMethod.GET)
 	public ModelAndView addLecturerCourse(@PathVariable Integer lid, @PathVariable Integer cid) {
 		
@@ -58,6 +87,14 @@ CourseService courseservice;
 		Course course = courseservice.FindCourse(cid);
 		lecturerservice.lecturerAddCourses(lecturer, course);
 		ModelAndView mav = new ModelAndView("LectureCRUD");
+	/*	ModelAndView mav = new ModelAndView();
+		String message = "New user " + user.getUserId() + " was successfully created.";
+
+		uService.createUser(user);
+		mav.setViewName("redirect:/admin/user/list");
+
+		redirectAttributes.addFlashAttribute("message", message);
+		return mav;*/
 	    return mav;
 	}
 	
