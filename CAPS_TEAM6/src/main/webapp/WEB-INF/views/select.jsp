@@ -2,18 +2,42 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 
+<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
 </head>
-
 <body>
-<table>
-<td><form:select path="lecturer.firstmiddlename" items="${eidlist}" /></td>
-<td><form:select path="course.cname" items="${cname}" /></td>
-</table>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
+
+
+
+<fieldset>  
+<form:form modelAttribute="studentcourse" action="${pageContext.request.contextPath}/StudentCourse/Manageenrol/${courseid}" method="get">
+
+<form:select path="course.cname"
+items="${courses}" />
+
+
+ 
+<input id="submit" type="submit" tabindex="5"
+value="Select course">
+ </fieldset>
+
+</form:form> 
+
 </body>
 </html>

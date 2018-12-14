@@ -26,6 +26,9 @@ public interface StudentCourseService {
 
     void removeStudent(StudentCourse s);
 
+	public ArrayList<StudentCourse> getCoursebyname(String name);
+
+
 	public ArrayList<StudentCourse> findAllenrols();
 	
 

@@ -5,6 +5,7 @@
 	<ul class="sidelist">
 		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
+<<<<<<< HEAD
 			<li><a
 				href="${listMapview.value}">
 					${listMapview.key}</a></li>
@@ -17,8 +18,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+=======
+<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
+>>>>>>> stash
 </head>
 <body>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
+
 
  
   <c:if test="${fn:length(clist) gt 0}">

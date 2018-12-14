@@ -4,6 +4,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="STYLESHEET" type="text/css"
 	href="${pageContext.request.contextPath}/js/jquery-ui.theme.css" />
+	
+	
+	<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
+</head>
+<body>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
 
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>

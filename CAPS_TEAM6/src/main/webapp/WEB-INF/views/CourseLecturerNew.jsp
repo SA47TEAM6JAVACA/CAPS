@@ -34,6 +34,7 @@
 
 	}
 </script>
+<<<<<<< HEAD
 	<ul class="sidelist">
 		<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
@@ -45,6 +46,26 @@
 	</ul>
 
 	<hr>
+=======
+
+<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
+</head>
+<body>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
+>>>>>>> stash
 <h1>This is the Course edit page</h1>
 <form:form action="${pageContext.request.contextPath}/Admin/newCourse"
 	mehtod="POST" modelAttribute="course">

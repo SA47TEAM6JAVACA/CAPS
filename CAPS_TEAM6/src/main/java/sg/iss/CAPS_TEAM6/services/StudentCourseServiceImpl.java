@@ -95,6 +95,12 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		
 	}
 
+	@Override
+	public ArrayList<StudentCourse> getCoursebyname(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	}
 	

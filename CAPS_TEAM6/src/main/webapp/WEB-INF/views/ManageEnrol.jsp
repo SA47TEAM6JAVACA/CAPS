@@ -11,6 +11,24 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
+<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
+</head>
+<body>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
 <body>
 <ul>
 	<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">

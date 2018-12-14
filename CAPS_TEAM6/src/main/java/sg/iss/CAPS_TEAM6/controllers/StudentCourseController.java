@@ -1,6 +1,10 @@
 package sg.iss.CAPS_TEAM6.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import sg.iss.CAPS_TEAM6.services.CourseService;
 import sg.iss.CAPS_TEAM6.services.StudentCourseService;
 
 import sg.iss.CAPS_TEAM6.validator.StudentCourseValidator;
@@ -37,8 +42,16 @@ public class StudentCourseController {
 
 	@Autowired
 	StudentCourseService sService;
+
 	 @Autowired
 	 private StudentCourseValidator scValidator;
+
+	
+	@Autowired
+	CourseService courseservice;
+	// @Autowired
+	// private StudentValidator sValidator;
+
 	
    @InitBinder("studentcourse")
    private void initStudentCourseBinder(WebDataBinder binder)
@@ -119,48 +132,132 @@ public class StudentCourseController {
 		return mav;
 	}
 	
+
+	
+	@RequestMapping(value = "/listgrade/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView editGrade(@ModelAttribute StudentCourse elist) {
+		sService.updateStudent(elist);
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+
 	
 	
 	
-	@RequestMapping(value = "/Manageenrol", method = RequestMethod.GET)
-	public ModelAndView ManageEnrol() {
+	@RequestMapping(value = "/Manageenrol/{id}", method = RequestMethod.GET)
+	public ModelAndView ManageEnrol(@PathVariable String name, @ModelAttribute  @Valid  StudentCourse studentcourse) {
 		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
 		
-		
-		
-		
 		elist = sService.gradeCourse(1);
+
+		elist = sService.getCoursebyname(name);
+
 		ModelAndView mav = new ModelAndView("DeleteEnrollment");
 		mav.addObject("elist",elist);
+		
+		
+		
+		ArrayList<Course> courselist= courseservice.findAllcours();
+		ArrayList<String> cname=new ArrayList<>();
+		ArrayList<Integer> cid=new ArrayList<>();
+		for(Course c   :courselist)
+		{
+			cname.add(c.getCname());
+			cid.add(c.getCid());
+		}
+		//mav.addObject("courselist", cid);
+		
+		
+		int testcid=0;
+		
+		for(Course c   :courselist)
+		{
+			if(studentcourse.getCourse().getCname().equalsIgnoreCase(c.getCname()))
+			testcid=c.getCid();
+		}
+		
+		studentcourse.getCourse().setCid(testcid);
+
+		mav.addObject("courseid",testcid);
+		mav.addObject("courselist", cname);
+	
+		
 		return mav;
 	}
 	
-	@RequestMapping(value = "/Manageenrol/delete/{scid}", method = RequestMethod.GET)
-	public ModelAndView deleteEnrol(@PathVariable Integer scid) {
+	@RequestMapping(value = "/Manageenrol/{id}/delete/{scid}", method = RequestMethod.GET)
+	public ModelAndView deleteEnrol(@PathVariable Integer scid,@PathVariable Integer id) {
 		StudentCourse list=sService.findStudentCourseBySCID(scid);
 		sService.removeStudent(list);
 		ArrayList<StudentCourse> elist = new ArrayList<StudentCourse>();
-		elist = sService.gradeCourse(1);
+		elist = sService.gradeCourse(id);
 		ModelAndView mav = new ModelAndView("DeleteEnrollment");
 		mav.addObject("elist",elist);
 		return mav;
 	}
 	
 	
-	@RequestMapping(value = "/ListStudentEnrolledForCourse", method = RequestMethod.GET)
-	public ModelAndView listStudent() {
+/*	@RequestMapping(value = "/selectcourse/{id}", method = RequestMethod.GET)
+	public ModelAndView listStudent(@PathVariable Integer id) {
 		ArrayList<Student> slist = new ArrayList<Student>();
-		slist = sService.listStudentsEnrolledForCourse(1);
+		slist = sService.listStudentsEnrolledForCourse(id);
 		ModelAndView mav = new ModelAndView("ListStudentEnrolledForCourse");
 		mav.addObject("slist",slist);
 		return mav;
 	}
+	*/
+	
 	@RequestMapping(value = "/listCoursesTaughtByLecturer", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(HttpSession session) {
+		MenuList menu=(MenuList)session.getAttribute("USERSESSION");
 		ArrayList<Course> clist = new ArrayList<Course>();
 		ModelAndView mav = new ModelAndView("listCoursesTaughtByLecturer");
      	clist = sService.listCoursesTaughtByLecturer(1);
 	    mav.addObject("clist",clist);
 		return mav;
+
 	}
+
+	
+	
+	@RequestMapping(value = "/selectcourse", method = RequestMethod.POST)
+	public ModelAndView SelectLecturerPage(@ModelAttribute  @Valid  StudentCourse studentcourse) {
+		ModelAndView mav = new ModelAndView("DeleteEnrollment") ;
+		ArrayList<Course> courselist= courseservice.findAllcours();
+		ArrayList<String> cname=new ArrayList<>();
+		ArrayList<Integer> cid=new ArrayList<>();
+		for(Course c   :courselist)
+		{
+			cname.add(c.getCname());
+			cid.add(c.getCid());
+		}
+		mav.addObject("courselist", cname);
+		//mav.addObject("courselist", cid);
+		
+		
+		int testcid=0;
+		
+		for(Course c   :courselist)
+		{
+			if(studentcourse.getCourse().getCname().equalsIgnoreCase(c.getCname()))
+			testcid=c.getCid();
+		}
+		
+		return mav;
+	}
+		
+	 @RequestMapping(value = "/selectcourse",method=RequestMethod.GET)
+	  public ModelAndView listbook() {
+	  List<Course> courses = courseservice.findAllcours();
+	  ArrayList<String> cn=new ArrayList<>();
+		  for (Course course : courses) {
+			cn.add(course.getCname());  
+		  }
+		  ModelAndView mav = new ModelAndView("select","Course",courses);
+			 mav.addObject("courses", cn); 
+			 mav.addObject("studentcourse", new StudentCourse());
+		return mav;
+	}
+	
+
 }

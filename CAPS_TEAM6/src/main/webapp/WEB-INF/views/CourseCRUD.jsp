@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
+<<<<<<< HEAD
 <ul class="sidelist">
 	<c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
 
@@ -12,8 +13,29 @@
 </ul>
 
 <hr>
+=======
+>>>>>>> stash
 <a href="${pageContext.request.contextPath}/Admin/newCourse">Add
 	Course</a>
+	
+	<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
+
+<body>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
+	
 <c:if test="${fn:length(courses) gt 0 }">
 	<br />
 	<br />	

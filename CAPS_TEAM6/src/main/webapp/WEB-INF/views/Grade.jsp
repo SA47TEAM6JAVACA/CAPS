@@ -18,6 +18,23 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<link href="<c:url value='/styles/style.css'/>" rel="stylesheet"
+    type="text/css" />
+ 
+</head>
+<body>
+ 
+    <ul class="sidelist">
+        <c:forEach var="listMapview" items="${sessionScope.USERSESSION.link}">
+ 
+            <li><a
+                href="${listMapview.value}">
+                    ${listMapview.key}</a></li>
+ 
+        </c:forEach>
+    </ul>
+ 
+    <hr>
 <body>
 <form:form action="${pageContext.request.contextPath}/StudentCourse/listgrade" method="POST" modelAttribute="studentcourse">
 Student Course ID:<form:input path="scid" size="10" readonly="true"/><br/>
