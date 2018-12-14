@@ -20,13 +20,11 @@ public class StudentCourseValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		StudentCourse studentcourse=(StudentCourse)target;
 	ValidationUtils.rejectIfEmpty(errors, "score", "Score can't be empty");
-	ValidationUtils.rejectIfEmpty(errors, "attendence", "Score can't be empty");
 
-		
         double d=studentcourse.getScore();
 
-		if(d<5){
-			errors.rejectValue("score", null, "Email should contain @");
+		if(d>100||d<0){
+			errors.rejectValue("score", null, "Score range: 0-100");
 		}
 //		if(d>100||d<0){
 //			errors.rejectValue("score", null, "Score out of range");

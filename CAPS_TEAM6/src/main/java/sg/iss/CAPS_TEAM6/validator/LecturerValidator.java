@@ -24,7 +24,6 @@ public class LecturerValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "lemail", "Email can't be empty");
 		ValidationUtils.rejectIfEmpty(errors, "firstmiddlename", "First can't be empty");
 		
-		
 		if(!lecturer.getLemail().contains("@")){
 			errors.rejectValue("lemail", null, "Email should contain @");
 			}
