@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import sg.iss.CAPS_TEAM6.model.Course;
 import sg.iss.CAPS_TEAM6.model.Lecturer;
+import sg.iss.CAPS_TEAM6.services.CourseService;
+import sg.iss.CAPS_TEAM6.services.LecturerService;
 import sg.iss.CAPS_TEAM6.services.ManageCourseService;
 
 @Controller
@@ -20,6 +22,12 @@ public class ManagementCourseController {
 
 	@Autowired
 	ManageCourseService mcservice;
+	
+	@Autowired
+	LecturerService lecturerservice;
+	
+	@Autowired
+	CourseService courseservice;
 
 	@RequestMapping(value = "/ManageCourse", method = RequestMethod.GET)
 	public ModelAndView listAll() {
@@ -82,10 +90,11 @@ public class ManagementCourseController {
 	
 	@RequestMapping(value = "/addlecturer/{cid}/{lid}", method = RequestMethod.GET)
 	public ModelAndView addCourselecturerPage(@PathVariable Integer cid,@PathVariable Integer lid) {
-		//Course course = mcservice.findCourseById(cid,lid);
-		//mcservice.removeCourse(course);
+		Lecturer lecturer = lecturerservice.FindLecturer(lid);
+		Course course = courseservice.FindCourse(cid);
+		lecturerservice.lecturerAddCourses(lecturer, course);
 		ArrayList<Course> clist = mcservice.findAllCourse();
-		ModelAndView mav = new ModelAndView("CourseLecturerNew");
+		ModelAndView mav = new ModelAndView("CourseCRUD");
 		mav.addObject("courses", clist);
 		return mav;
 	}

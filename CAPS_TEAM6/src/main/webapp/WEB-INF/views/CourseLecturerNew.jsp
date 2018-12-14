@@ -42,24 +42,6 @@
 	<br />
   Name: <form:input path="cname" size="45" />
 	<br />
-  Credit:<form:input path="credit" size="10" />
-	<br />
-	<fmt:formatDate value="${course.startdate}" pattern="yyyy/mm/dd"
-		var="startd" />
-  Start Date:<form:input path="startdate" size="20" value="${startd}"
-		id="datepicker1" />
-	<br />
-	<fmt:formatDate value="${course.enddate}" pattern="yyyy/mm/dd"
-		var="endd" />
-  End Date:<form:input path="enddate" size="20" value="${endd}"
-		id="datepicker2" />
-	<br />
-  Fee:<form:input path="fee" size="20" />
-	<br />
-  Room:<form:input path="room" size="11" />
-	<br />
-  Student limit:<form:input path="studentlimit" size="11" />
-	<br />
 	<table class="borderAll">
 		<tr>
 			<th><s:message code="label.course.index" /></th>
